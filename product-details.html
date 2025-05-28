@@ -132,7 +132,7 @@
                   <th>Quantity</th>
                   <th>Address</th>
                   <th>Amount</th>
-                  <th>BV Points</th>
+                  <th>PV Points</th>
                   <th>Invoice</th>
                 </tr>
               </thead>
@@ -170,7 +170,7 @@
                   <th>Quantity</th>
                   <th>Address</th>
                   <th>Amount</th>
-                  <th>BV Points</th>
+                  <th>PV Points</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -406,7 +406,7 @@
           'Quantity': cells[4].textContent,
           'Address': cells[5].textContent,
           'Amount': cells[6].textContent,
-          'BV Points': cells[7].textContent
+          'PV Points': cells[7].textContent
         };
 
         const primaryColor = [0, 255, 204]; // #00ffcc
@@ -455,7 +455,7 @@
         doc.text('Order Details:', 20, y + 10);
         y += 20;
 
-        const headers = ['SI.NO', 'Date', 'Product Name', 'Product ID', 'Qty', 'Amount', 'BV Points'];
+        const headers = ['SI.NO', 'Date', 'Product Name', 'Product ID', 'Qty', 'Amount', 'PV Points'];
         const data = [[
           details['SI.NO'],
           details['Date'],
@@ -463,7 +463,7 @@
           details['Product ID'],
           details['Quantity'],
           details['Amount'],
-          details['BV Points']
+          details['PV Points']
         ]];
 
         const colWidths = [15, 25, 55, 30, 15, 25, 25];
@@ -500,7 +500,7 @@
         doc.setFont('helvetica', 'normal');
         doc.setTextColor(...textColor);
         doc.text(`Total Amount: ${details['Amount']}`, 150, tableY + 8, { align: 'right' });
-        doc.text(`Total BV Points: ${details['BV Points']}`, 150, tableY + 16, { align: 'right' });
+        doc.text(`Total PV Points: ${details['PV Points']}`, 150, tableY + 16, { align: 'right' });
 
         // Footer
         tableY += 30;
