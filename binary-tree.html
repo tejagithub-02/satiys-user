@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Satiys Client Dashboard - Binary Tree</title>
+  <title>Raanvi Client Dashboard - Binary Tree</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="assets/style.css" rel="stylesheet">
- <link rel="stylesheet" href="assets/Binary.css">
+  <link rel="stylesheet" href="assets/Binary.css">
 </head>
 <body> 
   <!-- Topbar -->
   <nav class="topbar text-white flex justify-between items-center">
     <div class="flex items-center space-x-4">
       <i class="fas fa-bars sidebar-toggle hidden md:block text-white" id="sidebar-toggle"></i>
-      <i class="fas fa-bars menu-toggle block md:hidden text-white" id="menu-toggle"></i>    
-      <!-- Increased scale to 150% -->
-      <img src="images/logo.png" alt="Satiys Logo" class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain transform scale-150">    
-      <span style="font-family: Georgia, serif; color: #0A1A2F; text-shadow: 1px 1px 2px #FFD700, 0 0 5px #FFD700; font-size: 1.6rem; font-weight: bold; letter-spacing: 2px;">
-        SATIYS
-      </span>
+      <img src="images/R-logo.jpg" alt="Raanvi Logo" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain">
+      <i class="fas fa-bars menu-toggle block md:hidden text-white" id="menu-toggle"></i>
     </div>
     <div class="flex items-center relative">
       <i class="fas fa-user-circle admin-icon" id="admin-icon"></i>
@@ -65,16 +61,16 @@
         </div>
       </div>
       <div class="sidebar-item">
-        <a href="earning-history.html" id="my-team-toggle">
+        <a href="earning-history.html" id="earning-history-toggle">
           <i class="fas fa-money-check-alt"></i>
           <span>Earning History</span>
           <i class="fas fa-chevron-down dropdown-icon"></i>
         </a>
-        <div class="submenu" id="my-team-submenu">
+        <div class="submenu" id="earning-history-submenu">
           <a href="referral-bonus.html"><i class="fas fa-gift"></i> <span>Referral Bonus</span></a>
           <a href="leadership-bonus.html"><i class="fas fa-trophy"></i> <span>Leadership Bonus</span></a>
           <a href="rank-reward.html"><i class="fas fa-medal"></i> <span>Rank and Reward</span></a>
-         
+          <a href="tour.html"><i class="fas fa-plane"></i> <span>Tour</span></a>
         </div>
       </div>
       <div class="sidebar-item">
@@ -84,14 +80,14 @@
           <i class="fas fa-chevron-down dropdown-icon"></i>
         </a>
         <div class="submenu" id="topup-fund-submenu">
-          <a href="transaction-details.html" ><i class="fas fa-receipt"></i> <span>Transaction Details</span></a>
+          <a href="fund.html"><i class="fas fa-money-bill"></i> <span>Fund</span></a>
+          <a href="topup.html"><i class="fas fa-credit-card"></i> <span>Topup</span></a>
+          <a href="transaction-details.html"><i class="fas fa-receipt"></i> <span>Transaction Details</span></a>
           <a href="product-details.html"><i class="fas fa-shopping-bag"></i> <span>Order Product</span></a>
           <a href="repurchase.html"><i class="fas fa-shopping-cart"></i> <span>Repurchase</span></a>
         </div>
       </div>
-      
       <a href="withdrawal.html"><i class="fas fa-money-bill"></i> <span>Withdraw</span></a>
-      
       <a href="#" id="sidebar-sign-out"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a>
     </div>
 
@@ -105,14 +101,128 @@
             <input type="text" id="search-id" placeholder="Enter ID (e.g., RI001)">
             <button onclick="searchNode()">Search</button>
           </div>
-        
           <div class="binary-tree-container">
-            <svg class="binary-tree-svg"></svg>
+            <svg class="binary-tree-svg">
+              <!-- Links -->
+              <path class="link" d="M0,78 L-200,178"></path>
+              <path class="link" d="M0,78 L200,178"></path>
+              <path class="link" d="M-200,178 L-300,278"></path>
+              <path class="link" d="M-200,178 L-100,278"></path>
+              <path class="link" d="M200,178 L100,278"></path>
+              <path class="link" d="M200,178 L300,278"></path>
+
+              <!-- Node RI001 -->
+              <g class="node" data-id="RI001">
+                <circle class="node-circle" cx="0" cy="50" r="28"></circle>
+                <text class="node-icon" x="0" y="50" text-anchor="middle">👤</text>
+                <g class="child-indicators-group" style="visibility: hidden;">
+                  <text class="child-indicator" x="-38" y="55" text-anchor="middle">◄</text>
+                  <text class="child-indicator" x="38" y="55" text-anchor="middle">►</text>
+                </g>
+                <text class="node-id" x="0" y="88" text-anchor="middle">RI001 (Varun)</text>
+                <g class="node-details-group" style="visibility: hidden;">
+                  <text class="node-details" x="38" y="25">Name: Varun</text>
+                  <text class="node-details" x="38" y="40">E-Mail: varun@gmail.com</text>
+                  <text class="node-details" x="38" y="55">CFP: 0RV</text>
+                  <text class="node-details" x="38" y="70">Number: 9876543210</text>
+                </g>
+              </g>
+
+              <!-- Node RI002 -->
+              <g class="node" data-id="RI002">
+                <circle class="node-circle" cx="-200" cy="150" r="28"></circle>
+                <text class="node-icon" x="-200" y="150" text-anchor="middle">👤</text>
+                <g class="child-indicators-group" style="visibility: hidden;">
+                  <text class="child-indicator" x="-238" y="155" text-anchor="middle">◄</text>
+                  <text class="child-indicator" x="-162" y="155" text-anchor="middle">►</text>
+                </g>
+                <text class="node-id" x="-200" y="188" text-anchor="middle">RI002 (Kiran)</text>
+                <g class="node-details-group" style="visibility: hidden;">
+                  <text class="node-details" x="-162" y="125">Name: Kiran</text>
+                  <text class="node-details" x="-162" y="140">E-Mail: kiran@gmail.com</text>
+                  <text class="node-details" x="-162" y="155">CFP: 100RV</text>
+                  <text class="node-details" x="-162" y="170">Number: 9276543232</text>
+                </g>
+              </g>
+
+              <!-- Node RI003 -->
+              <g class="node" data-id="RI003">
+                <circle class="node-circle" cx="200" cy="150" r="28"></circle>
+                <text class="node-icon" x="200" y="150" text-anchor="middle">👤</text>
+                <g class="child-indicators-group" style="visibility: hidden;">
+                  <text class="child-indicator" x="162" y="155" text-anchor="middle">◄</text>
+                  <text class="child-indicator" x="238" y="155" text-anchor="middle">►</text>
+                </g>
+                <text class="node-id" x="200" y="188" text-anchor="middle">RI003 (Johnson)</text>
+                <g class="node-details-group" style="visibility: hidden;">
+                  <text class="node-details" x="238" y="125">Name: Johnson</text>
+                  <text class="node-details" x="238" y="140">E-Mail: john.j@gmail.com</text>
+                  <text class="node-details" x="238" y="155">CFP: 0RV</text>
+                  <text class="node-details" x="238" y="170">Number: 8876543210</text>
+                </g>
+              </g>
+
+              <!-- Node RI004 -->
+              <g class="node" data-id="RI004">
+                <circle class="node-circle" cx="-300" cy="250" r="28"></circle>
+                <text class="node-icon" x="-300" y="250" text-anchor="middle">👤</text>
+                <g class="child-indicators-group" style="visibility: hidden;"></g>
+                <text class="node-id" x="-300" y="288" text-anchor="middle">RI004 (Emily)</text>
+                <g class="node-details-group" style="visibility: hidden;">
+                  <text class="node-details" x="-262" y="225">Name: Emily</text>
+                  <text class="node-details" x="-262" y="240">E-Mail: emily.b@gmail.com</text>
+                  <text class="node-details" x="-262" y="255">CFP: 0RV</text>
+                  <text class="node-details" x="-262" y="270">Number: 8736543210</text>
+                </g>
+              </g>
+
+              <!-- Node RI005 -->
+              <g class="node" data-id="RI005">
+                <circle class="node-circle" cx="-100" cy="250" r="28"></circle>
+                <text class="node-icon" x="-100" y="250" text-anchor="middle">👤</text>
+                <g class="child-indicators-group" style="visibility: hidden;"></g>
+                <text class="node-id" x="-100" y="288" text-anchor="middle">RI005 (David)</text>
+                <g class="node-details-group" style="visibility: hidden;">
+                  <text class="node-details" x="-62" y="225">Name: David</text>
+                  <text class="node-details" x="-62" y="240">E-Mail: david.w@gmail.com</text>
+                  <text class="node-details" x="-62" y="255">CFP: 0RV</text>
+                  <text class="node-details" x="-62" y="270">Number: 6856543210</text>
+                </g>
+              </g>
+
+              <!-- Node RI006 -->
+              <g class="node" data-id="RI006">
+                <circle class="node-circle" cx="100" cy="250" r="28"></circle>
+                <text class="node-icon" x="100" y="250" text-anchor="middle">👤</text>
+                <g class="child-indicators-group" style="visibility: hidden;"></g>
+                <text class="node-id" x="100" y="288" text-anchor="middle">RI006 (Sarah)</text>
+                <g class="node-details-group" style="visibility: hidden;">
+                  <text class="node-details" x="138" y="225">Name: Sarah</text>
+                  <text class="node-details" x="138" y="240">E-Mail: sarah.k@gmail.com</text>
+                  <text class="node-details" x="138" y="255">CFP: 0RV</text>
+                  <text class="node-details" x="138" y="270">Number: 9123456789</text>
+                </g>
+              </g>
+
+              <!-- Node RI007 -->
+              <g class="node" data-id="RI007">
+                <circle class="node-circle" cx="300" cy="250" r="28"></circle>
+                <text class="node-icon" x="300" y="250" text-anchor="middle">👤</text>
+                <g class="child-indicators-group" style="visibility: hidden;"></g>
+                <text class="node-id" x="300" y="288" text-anchor="middle">RI007 (Michael)</text>
+                <g class="node-details-group" style="visibility: hidden;">
+                  <text class="node-details" x="338" y="225">Name: Michael</text>
+                  <text class="node-details" x="338" y="240">E-Mail: michael.l@gmail.com</text>
+                  <text class="node-details" x="338" y="255">CFP: 0RV</text>
+                  <text class="node-details" x="338" y="270">Number: 9988776655</text>
+                </g>
+              </g>
+            </svg>
           </div>
         </div>
       </div>
       <footer class="main-footer">
-        @2025 Satiys - Developed By Bloom It Solutions
+        @2025 Raanvi - Developed By Bloom It Solutions
       </footer>
     </div>
   </div>
@@ -129,6 +239,8 @@
       const myTeamToggle = document.getElementById('my-team-toggle');
       const myTeamSubmenu = document.getElementById('my-team-submenu');
       const dropdownIcon = myTeamToggle.querySelector('.dropdown-icon');
+      const svg = document.querySelector('.binary-tree-svg');
+      const container = document.querySelector('.binary-tree-container');
 
       if (sidebarToggle && sidebarExpand && sidebar && mainContent) {
         sidebarToggle.addEventListener('click', () => {
@@ -197,150 +309,82 @@
         });
       }
 
-      const svg = document.querySelector('.binary-tree-svg');
-      const container = document.querySelector('.binary-tree-container');
-      const ns = 'http://www.w3.org/2000/svg';
-
-      const treeData = [
-        { id: 'RI001', name: 'Name: Varun', email: 'E-Mail: varun@gmail.com', mobile: 'Number: 9876543210', cfp: '0RV', level: 0, x: 0, y: 50, left: 'RI002', right: 'RI003' },
-        { id: 'RI002', name: 'Name: Kiran', email: 'E-Mail: kiran@gmail.com', mobile: 'Number: 9276543232', cfp: '100RV', level: 1, x: -200, y: 150, left: 'RI004', right: 'RI005' },
-        { id: 'RI003', name: 'Name: Johnson', email: 'E-Mail: john.j@gmail.com', mobile: 'Number: 8876543210', cfp: '0RV', level: 1, x: 200, y: 150, left: 'RI006', right: 'RI007' },
-        { id: 'RI004', name: 'Name: Emily', email: 'E-Mail: emily.b@gmail.com', mobile: 'Number: 8736543210', cfp: '0RV', level: 2, x: -300, y: 250, left: null, right: null },
-        { id: 'RI005', name: 'Name: David', email: 'E-Mail: david.w@gmail.com', mobile: 'Number: 6856543210', cfp: '0RV', level: 2, x: -100, y: 250, left: null, right: null },
-        { id: 'RI006', name: 'Name: Sarah', email: 'E-Mail: sarah.k@gmail.com', mobile: 'Number: 9123456789', cfp: '0RV', level: 2, x: 100, y: 250, left: null, right: null },
-        { id: 'RI007', name: 'Name: Michael', email: 'E-Mail: michael.l@gmail.com', mobile: 'Number: 9988776655', cfp: '0RV', level: 2, x: 300, y: 250, left: null, right: null }
-      ];
-
-      function drawBinaryTree(highlightedId = null) {
-        svg.innerHTML = '';
-
+      function adjustBinaryTree() {
         const containerWidth = container.clientWidth;
         const screenWidth = window.innerWidth;
-
         const spacingFactor = screenWidth <= 480 ? 0.4 : screenWidth <= 768 ? 0.6 : 1;
         const nodeRadius = screenWidth <= 480 ? 16 : screenWidth <= 768 ? 20 : 28;
         const ySpacing = screenWidth <= 480 ? 80 : screenWidth <= 768 ? 100 : 120;
-
         const offsetX = containerWidth / 2;
 
-        const updatedTreeData = treeData.map(node => ({
-          ...node,
-          x: (node.x * spacingFactor) + offsetX,
-          y: node.level * ySpacing + 50,
-        }));
+        const nodes = [
+          { id: 'RI001', x: 0, level: 0, left: 'RI002', right: 'RI003' },
+          { id: 'RI002', x: -200, level: 1, left: 'RI004', right: 'RI005' },
+          { id: 'RI003', x: 200, level: 1, left: 'RI006', right: 'RI007' },
+          { id: 'RI004', x: -300, level: 2, left: null, right: null },
+          { id: 'RI005', x: -100, level: 2, left: null, right: null },
+          { id: 'RI006', x: 100, level: 2, left: null, right: null },
+          { id: 'RI007', x: 300, level: 2, left: null, right: null }
+        ];
 
-        updatedTreeData.forEach(node => {
-          const leftChild = updatedTreeData.find(n => n.id === node.left);
-          const rightChild = updatedTreeData.find(n => n.id === node.right);
-
-          if (leftChild) {
-            const path = document.createElementNS(ns, 'path');
-            path.setAttribute('class', 'link');
-            path.setAttribute('d', `M${node.x},${node.y + nodeRadius / 2} L${leftChild.x},${leftChild.y - nodeRadius / 2}`);
-            svg.appendChild(path);
-          }
-          if (rightChild) {
-            const path = document.createElementNS(ns, 'path');
-            path.setAttribute('class', 'link');
-            path.setAttribute('d', `M${node.x},${node.y + nodeRadius / 2} L${rightChild.x},${rightChild.y - nodeRadius / 2}`);
-            svg.appendChild(path);
+        nodes.forEach(node => {
+          const g = svg.querySelector(`.node[data-id="${node.id}"]`);
+          if (g) {
+            const cx = (node.x * spacingFactor) + offsetX;
+            const cy = node.level * ySpacing + 50;
+            g.querySelector('.node-circle').setAttribute('cx', cx);
+            g.querySelector('.node-circle').setAttribute('r', nodeRadius);
+            g.querySelector('.node-icon').setAttribute('x', cx);
+            g.querySelector('.node-icon').setAttribute('y', cy);
+            g.querySelector('.node-id').setAttribute('x', cx);
+            g.querySelector('.node-id').setAttribute('y', cy + nodeRadius + 10);
+            const details = g.querySelectorAll('.node-details');
+            details.forEach((detail, i) => {
+              detail.setAttribute('x', cx + nodeRadius + 10);
+              detail.setAttribute('y', cy + [-25, -10, 5, 20][i]);
+            });
+            const indicators = g.querySelectorAll('.child-indicator');
+            if (node.left) {
+              indicators[0]?.setAttribute('x', cx - nodeRadius - 10);
+              indicators[0]?.setAttribute('y', cy + 5);
+            }
+            if (node.right) {
+              indicators[indicators.length - 1]?.setAttribute('x', cx + nodeRadius + 10);
+              indicators[indicators.length - 1]?.setAttribute('y', cy + 5);
+            }
           }
         });
 
-        updatedTreeData.forEach(node => {
-          const g = document.createElementNS(ns, 'g');
-          g.setAttribute('class', `node ${node.id === highlightedId ? 'highlighted' : ''}`);
-          g.setAttribute('data-id', node.id);
+        const paths = [
+          { from: 'RI001', to: 'RI002' },
+          { from: 'RI001', to: 'RI003' },
+          { from: 'RI002', to: 'RI004' },
+          { from: 'RI002', to: 'RI005' },
+          { from: 'RI003', to: 'RI006' },
+          { from: 'RI003', to: 'RI007' }
+        ];
 
-          const circle = document.createElementNS(ns, 'circle');
-          circle.setAttribute('class', 'node-circle');
-          circle.setAttribute('cx', node.x);
-          circle.setAttribute('cy', node.y);
-          circle.setAttribute('r', nodeRadius);
-          g.appendChild(circle);
-
-          const userIcon = document.createElementNS(ns, 'text');
-          userIcon.setAttribute('class', 'node-icon');
-          userIcon.setAttribute('x', node.x);
-          userIcon.setAttribute('y', node.y);
-          userIcon.setAttribute('text-anchor', 'middle');
-          userIcon.textContent = '👤';
-          g.appendChild(userIcon);
-
-          // Create a group for child indicators (visible on hover)
-          const childIndicatorsGroup = document.createElementNS(ns, 'g');
-          childIndicatorsGroup.setAttribute('class', 'child-indicators-group');
-          childIndicatorsGroup.style.visibility = 'hidden';
-
-          if (node.left) {
-            const leftIndicator = document.createElementNS(ns, 'text');
-            leftIndicator.setAttribute('class', 'child-indicator');
-            leftIndicator.setAttribute('x', node.x - nodeRadius - 10);
-            leftIndicator.setAttribute('y', node.y + 5);
-            leftIndicator.setAttribute('text-anchor', 'middle');
-            leftIndicator.textContent = '◄';
-            childIndicatorsGroup.appendChild(leftIndicator);
+        paths.forEach((path, index) => {
+          const fromNode = nodes.find(n => n.id === path.from);
+          const toNode = nodes.find(n => n.id === path.to);
+          if (fromNode && toNode) {
+            const fromX = (fromNode.x * spacingFactor) + offsetX;
+            const fromY = fromNode.level * ySpacing + 50 + (nodeRadius / 2);
+            const toX = (toNode.x * spacingFactor) + offsetX;
+            const toY = toNode.level * ySpacing + 50 - (nodeRadius / 2);
+            svg.querySelectorAll('.link')[index].setAttribute('d', `M${fromX},${fromY} L${toX},${toY}`);
           }
-          if (node.right) {
-            const rightIndicator = document.createElementNS(ns, 'text');
-            rightIndicator.setAttribute('class', 'child-indicator');
-            rightIndicator.setAttribute('x', node.x + nodeRadius + 10);
-            rightIndicator.setAttribute('y', node.y + 5);
-            rightIndicator.setAttribute('text-anchor', 'middle');
-            rightIndicator.textContent = '►';
-            childIndicatorsGroup.appendChild(rightIndicator);
-          }
-
-          g.appendChild(childIndicatorsGroup);
-
-          const idText = document.createElementNS(ns, 'text');
-          idText.setAttribute('class', 'node-id');
-          idText.setAttribute('x', node.x);
-          idText.setAttribute('y', node.y + nodeRadius + 10);
-          idText.textContent = `${node.id} (${node.name.split(': ')[1]})`;
-          g.appendChild(idText);
-
-          const detailsGroup = document.createElementNS(ns, 'g');
-          detailsGroup.setAttribute('class', 'node-details-group');
-          detailsGroup.style.visibility = 'hidden';
-
-          const details = [
-            { label: node.name, offsetY: -25 },
-            { label: node.email, offsetY: -10 },
-            { label: `CFP: ${node.cfp}`, offsetY: 5 },
-            { label: node.mobile, offsetY: 20 }
-          ];
-
-          details.forEach(detail => {
-            const detailText = document.createElementNS(ns, 'text');
-            detailText.setAttribute('class', 'node-details');
-            detailText.setAttribute('x', node.x + nodeRadius + 10);
-            detailText.setAttribute('y', node.y + detail.offsetY);
-            detailText.textContent = detail.label;
-            detailsGroup.appendChild(detailText);
-          });
-
-          g.appendChild(detailsGroup);
-          svg.appendChild(g);
         });
+      }
 
-        document.querySelectorAll('.node').forEach(node => {
-          const detailsGroup = node.querySelector('.node-details-group');
-          const childIndicatorsGroup = node.querySelector('.child-indicators-group');
-          node.addEventListener('mouseover', () => {
-            detailsGroup.style.visibility = 'visible';
-            childIndicatorsGroup.style.visibility = 'visible';
-          });
-          node.addEventListener('mouseout', () => {
-            detailsGroup.style.visibility = 'hidden';
-            childIndicatorsGroup.style.visibility = 'hidden';
-          });
-        });
-
-        if (highlightedId) {
-          const highlightedNode = document.querySelector(`.node[data-id="${highlightedId}"]`);
-          if (highlightedNode) {
-            const circle = highlightedNode.querySelector('.node-circle');
+      window.searchNode = () => {
+        const searchInput = document.getElementById('search-id').value.trim().toUpperCase();
+        if (searchInput) {
+          const node = svg.querySelector(`.node[data-id="${searchInput}"]`);
+          if (node) {
+            svg.querySelectorAll('.node').forEach(n => n.classList.remove('highlighted'));
+            node.classList.add('highlighted');
+            const circle = node.querySelector('.node-circle');
             const cx = parseFloat(circle.getAttribute('cx'));
             const cy = parseFloat(circle.getAttribute('cy'));
             container.scrollTo({
@@ -348,22 +392,12 @@
               top: cy - container.clientHeight / 2,
               behavior: 'smooth'
             });
-          }
-        }
-      }
-
-      window.searchNode = () => {
-        const searchInput = document.getElementById('search-id').value.trim().toUpperCase();
-        if (searchInput) {
-          const node = treeData.find(n => n.id === searchInput);
-          if (node) {
-            drawBinaryTree(searchInput);
           } else {
             alert('ID not found in the binary tree.');
-            drawBinaryTree();
+            svg.querySelectorAll('.node').forEach(n => n.classList.remove('highlighted'));
           }
         } else {
-          drawBinaryTree();
+          svg.querySelectorAll('.node').forEach(n => n.classList.remove('highlighted'));
         }
       };
 
@@ -373,11 +407,22 @@
         }
       });
 
-      drawBinaryTree();
-
-      window.addEventListener('resize', () => {
-        drawBinaryTree();
+      document.querySelectorAll('.node').forEach(node => {
+        const detailsGroup = node.querySelector('.node-details-group');
+        const childIndicatorsGroup = node.querySelector('.child-indicators-group');
+        node.addEventListener('mouseover', () => {
+          detailsGroup.style.visibility = 'visible';
+          childIndicatorsGroup.style.visibility = 'visible';
+        });
+        node.addEventListener('mouseout', () => {
+          detailsGroup.style.visibility = 'hidden';
+          childIndicatorsGroup.style.visibility = 'hidden';
+        });
       });
+
+      adjustBinaryTree();
+
+      window.addEventListener('resize', adjustBinaryTree);
     });
   </script>
 </body>

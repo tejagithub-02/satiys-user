@@ -487,6 +487,22 @@ body {
   border: 2px solid #FFA500;
   box-shadow: 0 0 20px #00CED1;
 }
+.stats-cards .card:nth-child(19) { /* My Downline */
+  border: 2px solid #FF6F61;
+  box-shadow: 0 0 20px #32CD32;
+}
+.stats-cards .card:nth-child(20) { /* Tour Eligibility */
+  border: 2px solid #FF00FF;
+  box-shadow: 0 0 20px #FF4500;
+}
+.stats-cards .card:nth-child(21) { /* Binary Carry Forward */
+  border: 2px solid #FFFF00;
+  box-shadow: 0 0 20px #39FF14;
+}
+.stats-cards .card:nth-child(22) { /* Total Team */
+  border: 2px solid #00BFFF;
+  box-shadow: 0 0 20px #FF69B4;
+}
 .stats-cards .card:hover {
   transform: scale(1.03);
 }
