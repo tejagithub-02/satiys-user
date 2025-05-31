@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +9,317 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="assets/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/Binary.css">
+  <style>
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: flex-start;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .search-bar input,
+    .search-bar button {
+      padding: 8px;
+      border: 2px solid #00d4ff;
+      border-radius: 5px;
+      background: #0f3460;
+      color: #b3e0ff;
+      box-shadow: 0 0 5px #00d4ff;
+    }
+
+    .search-bar input::placeholder {
+      color: #b3e0ff;
+    }
+
+    .search-bar button {
+      background: #00d4ff;
+      color: #0f3460;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .search-bar button:hover {
+      background: #00ffcc;
+      box-shadow: 0 0 10px #00ffcc;
+      transform: scale(1.03);
+    }
+
+    .binary-tree-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .binary-tree-svg {
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+    }
+
+    .node {
+      cursor: pointer;
+    }
+
+    .node-circle {
+      fill: #0f3460;
+      stroke: #00d4ff;
+      stroke-width: 2;
+      transition: box-shadow 0.3s;
+    }
+
+    .node:hover .node-circle {
+      box-shadow: 0 0 15px #00d4ff;
+    }
+
+    .node:active .node-circle {
+      box-shadow: 0 0 15px #00d4ff;
+    }
+
+    .node.highlighted .node-circle {
+      stroke: #ffcc00;
+      stroke-width: 4;
+      box-shadow: 0 0 20px #ffcc00;
+    }
+
+    .node-icon {
+      font-size: 18px;
+      fill: #00ffcc;
+      dominant-baseline: middle;
+      text-anchor: middle;
+      transform: translateY(1px);
+    }
+
+    .node-id {
+      font-size: 12px;
+      fill: #b3e0ff;
+      text-anchor: middle;
+    }
+
+    .node-details {
+      font-size: 12px;
+      fill: #b3e0ff;
+      text-anchor: start;
+    }
+
+    .child-indicator {
+      font-size: 14px;
+      fill: #00ffcc;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .link {
+      stroke: #00d4ff;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    @media (min-width: 769px) {
+      .sidebar-toggle {
+        display: block;
+      }
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .topbar {
+        padding: 6px;
+      }
+      .topbar h1 {
+        font-size: 1.2rem;
+      }
+      .topbar .admin-icon {
+        font-size: 1.5rem;
+      }
+      .topbar img {
+        width: 40px;
+        height: 40px;
+      }
+      .dashboard-container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 180px;
+        border-right: none;
+        border-bottom: 2px solid #00d4ff;
+        position: fixed;
+        top: 60px;
+        left: -180px;
+        padding: 10px;
+      }
+      .sidebar.active {
+        left: 0;
+      }
+      .sidebar.collapsed {
+        width: 180px;
+        left: -180px;
+      }
+      .sidebar.collapsed h3,
+      .sidebar.collapsed a span {
+        display: block;
+      }
+      .sidebar.collapsed a {
+        justify-content: flex-start;
+      }
+      .sidebar-expand {
+        display: none;
+      }
+      .sidebar h3 {
+        font-size: 1.1rem;
+      }
+      .sidebar a {
+        font-size: 0.85rem;
+        padding: 6px;
+      }
+      .sidebar .submenu a {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+      }
+      .main-content {
+        margin-left: 0;
+        padding: 10px;
+      }
+      .main-content.collapsed {
+        margin-left: 0;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .sidebar-toggle {
+        display: none;
+      }
+      .admin-dropdown {
+        right: 10px;
+      }
+      .sidebar .submenu {
+        margin-left: 15px;
+      }
+      .search-bar {
+        flex-direction: row;
+        gap: 5px;
+        max-width: 100%;
+      }
+      .search-bar input,
+      .search-bar button {
+        width: auto;
+        padding: 6px;
+        font-size: 0.85rem;
+      }
+      .search-bar input {
+        flex: 1;
+      }
+      .search-bar button {
+        padding: 6px 12px;
+      }
+      .binary-tree-container {
+        height: 350px;
+      }
+      .binary-tree-svg {
+        viewBox: -450 -50 900 400;
+      }
+      .node-circle {
+        r: 18;
+      }
+      .node-icon {
+        font-size: 14px;
+        transform: translateY(0.5px);
+      }
+      .node-id {
+        font-size: 9px;
+      }
+      .node-details {
+        font-size: 9px;
+      }
+      .child-indicator {
+        font-size: 10px;
+      }
+      .link {
+        stroke-width: 1.5;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar {
+        padding: 4px;
+      }
+      .topbar h1 {
+        font-size: 1rem;
+      }
+      .topbar .admin-icon {
+        font-size: 1.25rem;
+      }
+      .topbar img {
+        width: 32px;
+        height: 32px;
+      }
+      .sidebar {
+        width: 160px;
+        left: -160px;
+      }
+      .sidebar.active {
+        left: 0;
+      }
+      .sidebar h3 {
+        font-size: 1rem;
+      }
+      .sidebar a {
+        font-size: 0.75rem;
+        padding: 5px;
+      }
+      .sidebar .submenu a {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+      }
+      .search-bar input,
+      .search-bar button {
+        padding: 5px;
+        font-size: 0.8rem;
+      }
+      .binary-tree-container {
+        height: 300px;
+      }
+      .node-circle {
+        r: 14;
+      }
+      .node-icon {
+        font-size: 12px;
+        transform: translateY(0.5px);
+      }
+      .node-id {
+        font-size: 7px;
+      }
+      .node-details {
+        font-size: 7px;
+      }
+      .child-indicator {
+        font-size: 8px;
+      }
+      .link {
+        stroke-width: 1;
+      }
+    }
+  </style>
 </head>
 <body> 
   <!-- Topbar -->
   <nav class="topbar text-white flex justify-between items-center">
     <div class="flex items-center space-x-4">
       <i class="fas fa-bars sidebar-toggle hidden md:block text-white" id="sidebar-toggle"></i>
-      <img src="images/R-logo.jpg" alt="Raanvi Logo" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain">
-      <i class="fas fa-bars menu-toggle block md:hidden text-white" id="menu-toggle"></i>
+      <i class="fas fa-bars menu-toggle block md:hidden text-white" id="menu-toggle"></i>    
+      <!-- Increased scale to 150% -->
+      <img src="images/logo.png" alt="Satiys Logo" class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain transform scale-150">    
+      <span style="font-family: Georgia, serif; color: #0A1A2F; text-shadow: 1px 1px 2px #FFD700, 0 0 5px #FFD700; font-size: 1.6rem; font-weight: bold; letter-spacing: 2px;">
+        SATIYS
+      </span>
     </div>
     <div class="flex items-center relative">
       <i class="fas fa-user-circle admin-icon" id="admin-icon"></i>
@@ -35,7 +338,7 @@
       <h3></h3>
       <a href="index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
       <div class="sidebar-item">
-        <a href="my-account.html" id="my-account-toggle">
+        <a href="#" id="my-account-toggle">
           <i class="fas fa-user"></i>
           <span>My Account</span>
           <i class="fas fa-chevron-down dropdown-icon"></i>
@@ -48,20 +351,20 @@
         </div>
       </div>
       <div class="sidebar-item">
-        <a href="my-team.html" id="my-team-toggle">
+        <a href="#" id="my-team-toggle">
           <i class="fas fa-users"></i>
           <span>My Team</span>
           <i class="fas fa-chevron-down dropdown-icon"></i>
         </a>
         <div class="submenu" id="my-team-submenu">
-          <a href="binary-tree.html" class="active"><i class="fas fa-sitemap"></i> <span>Binary Tree</span></a>
-          <a href="my-downline.html"><i class="fas fa-user-friends"></i> <span>My Downline</span></a>
+          <a href="binary-tree.html"><i class="fas fa-sitemap"></i> <span>Binary Tree</span></a>
+          <a href="my-downline.html" class="active"><i class="fas fa-user-friends"></i> <span>My Downline</span></a>
           <a href="my-referral.html"><i class="fas fa-user-plus"></i> <span>My Referral</span></a>
           <a href="binary-carry-forward.html"><i class="fas fa-exchange-alt"></i> <span>Binary Carry Forward</span></a>
         </div>
       </div>
       <div class="sidebar-item">
-        <a href="earning-history.html" id="earning-history-toggle">
+        <a href="#" id="earning-history-toggle">
           <i class="fas fa-money-check-alt"></i>
           <span>Earning History</span>
           <i class="fas fa-chevron-down dropdown-icon"></i>
@@ -70,7 +373,7 @@
           <a href="referral-bonus.html"><i class="fas fa-gift"></i> <span>Referral Bonus</span></a>
           <a href="leadership-bonus.html"><i class="fas fa-trophy"></i> <span>Leadership Bonus</span></a>
           <a href="rank-reward.html"><i class="fas fa-medal"></i> <span>Rank and Reward</span></a>
-          <a href="tour.html"><i class="fas fa-plane"></i> <span>Tour</span></a>
+          
         </div>
       </div>
       <div class="sidebar-item">
@@ -80,14 +383,15 @@
           <i class="fas fa-chevron-down dropdown-icon"></i>
         </a>
         <div class="submenu" id="topup-fund-submenu">
-          <a href="fund.html"><i class="fas fa-money-bill"></i> <span>Fund</span></a>
-          <a href="topup.html"><i class="fas fa-credit-card"></i> <span>Topup</span></a>
-          <a href="transaction-details.html"><i class="fas fa-receipt"></i> <span>Transaction Details</span></a>
+          <a href="transaction-details.html" ><i class="fas fa-receipt"></i> <span>Transaction Details</span></a>
           <a href="product-details.html"><i class="fas fa-shopping-bag"></i> <span>Order Product</span></a>
           <a href="repurchase.html"><i class="fas fa-shopping-cart"></i> <span>Repurchase</span></a>
         </div>
       </div>
+      
       <a href="withdrawal.html"><i class="fas fa-money-bill"></i> <span>Withdraw</span></a>
+      <a href="wallet.html"><i class="fas fa-wallet"></i> <span>Wallet</span></a>
+     
       <a href="#" id="sidebar-sign-out"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a>
     </div>
 
@@ -116,14 +420,14 @@
                 <circle class="node-circle" cx="0" cy="50" r="28"></circle>
                 <text class="node-icon" x="0" y="50" text-anchor="middle">👤</text>
                 <g class="child-indicators-group" style="visibility: hidden;">
-                  <text class="child-indicator" x="-38" y="55" text-anchor="middle">◄</text>
-                  <text class="child-indicator" x="38" y="55" text-anchor="middle">►</text>
+                  <text class="child-indicator" x="-38" y="50" text-anchor="middle">◄</text>
+                  <text class="child-indicator" x="38" y="50" text-anchor="middle">►</text>
                 </g>
                 <text class="node-id" x="0" y="88" text-anchor="middle">RI001 (Varun)</text>
                 <g class="node-details-group" style="visibility: hidden;">
                   <text class="node-details" x="38" y="25">Name: Varun</text>
                   <text class="node-details" x="38" y="40">E-Mail: varun@gmail.com</text>
-                  <text class="node-details" x="38" y="55">CFP: 0RV</text>
+                  <text class="node-details" x="38" y="55">CFP: 0BV</text>
                   <text class="node-details" x="38" y="70">Number: 9876543210</text>
                 </g>
               </g>
@@ -133,14 +437,14 @@
                 <circle class="node-circle" cx="-200" cy="150" r="28"></circle>
                 <text class="node-icon" x="-200" y="150" text-anchor="middle">👤</text>
                 <g class="child-indicators-group" style="visibility: hidden;">
-                  <text class="child-indicator" x="-238" y="155" text-anchor="middle">◄</text>
-                  <text class="child-indicator" x="-162" y="155" text-anchor="middle">►</text>
+                  <text class="child-indicator" x="-238" y="150" text-anchor="middle">◄</text>
+                  <text class="child-indicator" x="-162" y="150" text-anchor="middle">►</text>
                 </g>
                 <text class="node-id" x="-200" y="188" text-anchor="middle">RI002 (Kiran)</text>
                 <g class="node-details-group" style="visibility: hidden;">
                   <text class="node-details" x="-162" y="125">Name: Kiran</text>
                   <text class="node-details" x="-162" y="140">E-Mail: kiran@gmail.com</text>
-                  <text class="node-details" x="-162" y="155">CFP: 100RV</text>
+                  <text class="node-details" x="-162" y="155">CFP: 100BV</text>
                   <text class="node-details" x="-162" y="170">Number: 9276543232</text>
                 </g>
               </g>
@@ -150,14 +454,14 @@
                 <circle class="node-circle" cx="200" cy="150" r="28"></circle>
                 <text class="node-icon" x="200" y="150" text-anchor="middle">👤</text>
                 <g class="child-indicators-group" style="visibility: hidden;">
-                  <text class="child-indicator" x="162" y="155" text-anchor="middle">◄</text>
-                  <text class="child-indicator" x="238" y="155" text-anchor="middle">►</text>
+                  <text class="child-indicator" x="162" y="150" text-anchor="middle">◄</text>
+                  <text class="child-indicator" x="238" y="150" text-anchor="middle">►</text>
                 </g>
                 <text class="node-id" x="200" y="188" text-anchor="middle">RI003 (Johnson)</text>
                 <g class="node-details-group" style="visibility: hidden;">
                   <text class="node-details" x="238" y="125">Name: Johnson</text>
                   <text class="node-details" x="238" y="140">E-Mail: john.j@gmail.com</text>
-                  <text class="node-details" x="238" y="155">CFP: 0RV</text>
+                  <text class="node-details" x="238" y="155">CFP: 0BV</text>
                   <text class="node-details" x="238" y="170">Number: 8876543210</text>
                 </g>
               </g>
@@ -171,7 +475,7 @@
                 <g class="node-details-group" style="visibility: hidden;">
                   <text class="node-details" x="-262" y="225">Name: Emily</text>
                   <text class="node-details" x="-262" y="240">E-Mail: emily.b@gmail.com</text>
-                  <text class="node-details" x="-262" y="255">CFP: 0RV</text>
+                  <text class="node-details" x="-262" y="255">CFP: 0BV</text>
                   <text class="node-details" x="-262" y="270">Number: 8736543210</text>
                 </g>
               </g>
@@ -185,7 +489,7 @@
                 <g class="node-details-group" style="visibility: hidden;">
                   <text class="node-details" x="-62" y="225">Name: David</text>
                   <text class="node-details" x="-62" y="240">E-Mail: david.w@gmail.com</text>
-                  <text class="node-details" x="-62" y="255">CFP: 0RV</text>
+                  <text class="node-details" x="-62" y="255">CFP: 0BV</text>
                   <text class="node-details" x="-62" y="270">Number: 6856543210</text>
                 </g>
               </g>
@@ -199,7 +503,7 @@
                 <g class="node-details-group" style="visibility: hidden;">
                   <text class="node-details" x="138" y="225">Name: Sarah</text>
                   <text class="node-details" x="138" y="240">E-Mail: sarah.k@gmail.com</text>
-                  <text class="node-details" x="138" y="255">CFP: 0RV</text>
+                  <text class="node-details" x="138" y="255">CFP: 0BV</text>
                   <text class="node-details" x="138" y="270">Number: 9123456789</text>
                 </g>
               </g>
@@ -213,7 +517,7 @@
                 <g class="node-details-group" style="visibility: hidden;">
                   <text class="node-details" x="338" y="225">Name: Michael</text>
                   <text class="node-details" x="338" y="240">E-Mail: michael.l@gmail.com</text>
-                  <text class="node-details" x="338" y="255">CFP: 0RV</text>
+                  <text class="node-details" x="338" y="255">CFP: 0BV</text>
                   <text class="node-details" x="338" y="270">Number: 9988776655</text>
                 </g>
               </g>
@@ -222,7 +526,7 @@
         </div>
       </div>
       <footer class="main-footer">
-        @2025 Raanvi - Developed By Bloom It Solutions
+        @2025 Raanvi - Developed By Raanvi
       </footer>
     </div>
   </div>
@@ -313,18 +617,18 @@
         const containerWidth = container.clientWidth;
         const screenWidth = window.innerWidth;
         const spacingFactor = screenWidth <= 480 ? 0.4 : screenWidth <= 768 ? 0.6 : 1;
-        const nodeRadius = screenWidth <= 480 ? 16 : screenWidth <= 768 ? 20 : 28;
-        const ySpacing = screenWidth <= 480 ? 80 : screenWidth <= 768 ? 100 : 120;
+        const nodeRadius = screenWidth <= 480 ? 14 : screenWidth <= 768 ? 18 : 28;
+        const ySpacing = screenWidth <= 480 ? 70 : screenWidth <= 768 ? 90 : 120;
         const offsetX = containerWidth / 2;
 
         const nodes = [
           { id: 'RI001', x: 0, level: 0, left: 'RI002', right: 'RI003' },
           { id: 'RI002', x: -200, level: 1, left: 'RI004', right: 'RI005' },
           { id: 'RI003', x: 200, level: 1, left: 'RI006', right: 'RI007' },
-          { id: 'RI004', x: -300, level: 2, left: null, right: null },
-          { id: 'RI005', x: -100, level: 2, left: null, right: null },
-          { id: 'RI006', x: 100, level: 2, left: null, right: null },
-          { id: 'RI007', x: 300, level: 2, left: null, right: null }
+          { id: 'RI004', x: screenWidth <= 768 ? -375 : -300, level: 2, left: null, right: null },
+          { id: 'RI005', x: screenWidth <= 768 ? -125 : -100, level: 2, left: null, right: null },
+          { id: 'RI006', x: screenWidth <= 768 ? 125 : 100, level: 2, left: null, right: null },
+          { id: 'RI007', x: screenWidth <= 768 ? 375 : 300, level: 2, left: null, right: null }
         ];
 
         nodes.forEach(node => {
@@ -333,6 +637,7 @@
             const cx = (node.x * spacingFactor) + offsetX;
             const cy = node.level * ySpacing + 50;
             g.querySelector('.node-circle').setAttribute('cx', cx);
+            g.querySelector('.node-circle').setAttribute('cy', cy);
             g.querySelector('.node-circle').setAttribute('r', nodeRadius);
             g.querySelector('.node-icon').setAttribute('x', cx);
             g.querySelector('.node-icon').setAttribute('y', cy);
@@ -344,13 +649,13 @@
               detail.setAttribute('y', cy + [-25, -10, 5, 20][i]);
             });
             const indicators = g.querySelectorAll('.child-indicator');
-            if (node.left) {
-              indicators[0]?.setAttribute('x', cx - nodeRadius - 10);
-              indicators[0]?.setAttribute('y', cy + 5);
+            if (node.left && indicators[0]) {
+              indicators[0].setAttribute('x', cx - nodeRadius - 8);
+              indicators[0].setAttribute('y', cy);
             }
-            if (node.right) {
-              indicators[indicators.length - 1]?.setAttribute('x', cx + nodeRadius + 10);
-              indicators[indicators.length - 1]?.setAttribute('y', cy + 5);
+            if (node.right && indicators[indicators.length - 1]) {
+              indicators[indicators.length - 1].setAttribute('x', cx + nodeRadius + 8);
+              indicators[indicators.length - 1].setAttribute('y', cy);
             }
           }
         });
@@ -369,9 +674,9 @@
           const toNode = nodes.find(n => n.id === path.to);
           if (fromNode && toNode) {
             const fromX = (fromNode.x * spacingFactor) + offsetX;
-            const fromY = fromNode.level * ySpacing + 50 + (nodeRadius / 2);
+            const fromY = fromNode.level * ySpacing + 50 + nodeRadius;
             const toX = (toNode.x * spacingFactor) + offsetX;
-            const toY = toNode.level * ySpacing + 50 - (nodeRadius / 2);
+            const toY = toNode.level * ySpacing + 50 - nodeRadius;
             svg.querySelectorAll('.link')[index].setAttribute('d', `M${fromX},${fromY} L${toX},${toY}`);
           }
         });
