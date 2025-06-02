@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,304 +10,282 @@
   <link href="assets/style.css" rel="stylesheet">
   <style>
     .search-bar {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      justify-content: flex-start;
-      width: 100%;
-      max-width: 600px;
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 600px;
     }
-
     .search-bar input,
     .search-bar button {
-      padding: 8px;
-      border: 2px solid #00d4ff;
-      border-radius: 5px;
-      background: #0f3460;
-      color: #b3e0ff;
-      box-shadow: 0 0 5px #00d4ff;
+        padding: 8px;
+        border: 2px solid #00d4ff;
+        border-radius: 5px;
+        background: #0f3460;
+        color: #b3e0ff;
+        box-shadow: 0 0 5px #00d4ff;
     }
-
     .search-bar input::placeholder {
-      color: #b3e0ff;
+        color: #b3e0ff;
     }
-
     .search-bar button {
-      background: #00d4ff;
-      color: #0f3460;
-      cursor: pointer;
-      border: none;
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+        background: #00d4ff;
+        color: #0f3460;
+        cursor: pointer;
+        border: none;
+        transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
     }
-
     .search-bar button:hover {
-      background: #00ffcc;
-      box-shadow: 0 0 10px #00ffcc;
-      transform: scale(1.03);
+        background: #00ffcc;
+        box-shadow: 0 0 10px #00ffcc;
+        transform: scale(1.03);
     }
-
     .binary-tree-container {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      overflow: auto;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow-x: auto;
+        overflow-y: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
     .binary-tree-svg {
-      width: 100%;
-      height: 100%;
-      min-width: 0;
+        width: 100%;
+        height: 100%;
+        min-width: 0;
     }
-
     .node {
-      cursor: pointer;
+        cursor: pointer;
     }
-
     .node-circle {
-      fill: #0f3460;
-      stroke: #00d4ff;
-      stroke-width: 2;
-      transition: box-shadow 0.3s;
+        fill: #0f3460;
+        stroke: #00d4ff;
+        stroke-width: 2;
+        transition: box-shadow 0.3s;
     }
-
     .node:hover .node-circle {
-      box-shadow: 0 0 15px #00d4ff;
+        box-shadow: 0 0 15px #00d4ff;
     }
-
     .node:active .node-circle {
-      box-shadow: 0 0 15px #00d4ff;
+        box-shadow: 0 0 15px #00d4ff;
     }
-
     .node.highlighted .node-circle {
-      stroke: #ffcc00;
-      stroke-width: 4;
-      box-shadow: 0 0 20px #ffcc00;
+        stroke: #ffcc00;
+        stroke-width: 4;
+        box-shadow: 0 0 20px #ffcc00;
     }
-
     .node-icon {
-      font-size: 18px;
-      fill: #00ffcc;
-      dominant-baseline: middle;
-      text-anchor: middle;
-      transform: translateY(1px);
+        font-size: 18px;
+        fill: #00ffcc;
+        dominant-baseline: middle;
+        text-anchor: middle;
+        transform: translateY(1px);
     }
-
     .node-id {
-      font-size: 12px;
-      fill: #b3e0ff;
-      text-anchor: middle;
-    }
-
-    .node-details {
-      font-size: 12px;
-      fill: #b3e0ff;
-      text-anchor: start;
-    }
-
-    .child-indicator {
-      font-size: 14px;
-      fill: #00ffcc;
-      text-anchor: middle;
-      dominant-baseline: middle;
-    }
-
-    .link {
-      stroke: #00d4ff;
-      stroke-width: 2;
-      fill: none;
-    }
-
-    @media (min-width: 769px) {
-      .sidebar-toggle {
-        display: block;
-      }
-      .menu-toggle {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .topbar {
-        padding: 6px;
-      }
-      .topbar h1 {
-        font-size: 1.2rem;
-      }
-      .topbar .admin-icon {
-        font-size: 1.5rem;
-      }
-      .topbar img {
-        width: 40px;
-        height: 40px;
-      }
-      .dashboard-container {
-        flex-direction: column;
-      }
-      .sidebar {
-        width: 180px;
-        border-right: none;
-        border-bottom: 2px solid #00d4ff;
-        position: fixed;
-        top: 60px;
-        left: -180px;
-        padding: 10px;
-      }
-      .sidebar.active {
-        left: 0;
-      }
-      .sidebar.collapsed {
-        width: 180px;
-        left: -180px;
-      }
-      .sidebar.collapsed h3,
-      .sidebar.collapsed a span {
-        display: block;
-      }
-      .sidebar.collapsed a {
-        justify-content: flex-start;
-      }
-      .sidebar-expand {
-        display: none;
-      }
-      .sidebar h3 {
-        font-size: 1.1rem;
-      }
-      .sidebar a {
-        font-size: 0.85rem;
-        padding: 6px;
-      }
-      .sidebar .submenu a {
-        font-size: 0.8rem;
-        padding: 5px 10px;
-      }
-      .main-content {
-        margin-left: 0;
-        padding: 10px;
-      }
-      .main-content.collapsed {
-        margin-left: 0;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      .sidebar-toggle {
-        display: none;
-      }
-      .admin-dropdown {
-        right: 10px;
-      }
-      .sidebar .submenu {
-        margin-left: 15px;
-      }
-      .search-bar {
-        flex-direction: row;
-        gap: 5px;
-        max-width: 100%;
-      }
-      .search-bar input,
-      .search-bar button {
-        width: auto;
-        padding: 6px;
-        font-size: 0.85rem;
-      }
-      .search-bar input {
-        flex: 1;
-      }
-      .search-bar button {
-        padding: 6px 12px;
-      }
-      .binary-tree-container {
-        height: 350px;
-      }
-      .binary-tree-svg {
-        viewBox: -450 -50 900 400;
-      }
-      .node-circle {
-        r: 18;
-      }
-      .node-icon {
-        font-size: 14px;
-        transform: translateY(0.5px);
-      }
-      .node-id {
-        font-size: 9px;
-      }
-      .node-details {
-        font-size: 9px;
-      }
-      .child-indicator {
-        font-size: 10px;
-      }
-      .link {
-        stroke-width: 1.5;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .topbar {
-        padding: 4px;
-      }
-      .topbar h1 {
-        font-size: 1rem;
-      }
-      .topbar .admin-icon {
-        font-size: 1.25rem;
-      }
-      .topbar img {
-        width: 32px;
-        height: 32px;
-      }
-      .sidebar {
-        width: 160px;
-        left: -160px;
-      }
-      .sidebar.active {
-        left: 0;
-      }
-      .sidebar h3 {
-        font-size: 1rem;
-      }
-      .sidebar a {
-        font-size: 0.75rem;
-        padding: 5px;
-      }
-      .sidebar .submenu a {
-        font-size: 0.7rem;
-        padding: 4px 8px;
-      }
-      .search-bar input,
-      .search-bar button {
-        padding: 5px;
-        font-size: 0.8rem;
-      }
-      .binary-tree-container {
-        height: 300px;
-      }
-      .node-circle {
-        r: 14;
-      }
-      .node-icon {
         font-size: 12px;
-        transform: translateY(0.5px);
-      }
-      .node-id {
-        font-size: 7px;
-      }
-      .node-details {
-        font-size: 7px;
-      }
-      .child-indicator {
-        font-size: 8px;
-      }
-      .link {
-        stroke-width: 1;
-      }
+        fill: #b3e0ff;
+        text-anchor: middle;
     }
-  </style>
-</head>
+    .node-details {
+        font-size: 12px;
+        fill: #b3e0ff;
+        text-anchor: start;
+    }
+    .child-indicator {
+        font-size: 14px;
+        fill: #00ffcc;
+        text-anchor: middle;
+        dominant-baseline: middle;
+    }
+    .link {
+        stroke: #00d4ff;
+        stroke-width: 2;
+        fill: none;
+    }
+    @media (min-width: 769px) {
+        .sidebar-toggle {
+            display: block;
+        }
+        .menu-toggle {
+            display: none;
+        }
+    }
+    @media (max-width: 768px) {
+        .topbar {
+            padding: 6px;
+        }
+        .topbar h1 {
+            font-size: 1.2rem;
+        }
+        .topbar .admin-icon {
+            font-size: 1.5rem;
+        }
+        .topbar img {
+            width: 40px;
+            height: 40px;
+        }
+        .dashboard-container {
+            flex-direction: column;
+        }
+        .sidebar {
+            width: 180px;
+            border-right: none;
+            border-bottom: 2px solid #00d4ff;
+            position: fixed;
+            top: 60px;
+            left: -180px;
+            padding: 10px;
+        }
+        .sidebar.active {
+            left: 0;
+        }
+        .sidebar.collapsed {
+            width: 180px;
+            left: -180px;
+        }
+        .sidebar.collapsed h3,
+        .sidebar.collapsed a span {
+            display: block;
+        }
+        .sidebar.collapsed a {
+            justify-content: flex-start;
+        }
+        .sidebar-expand {
+            display: none;
+        }
+        .sidebar h3 {
+            font-size: 1.1rem;
+        }
+        .sidebar a {
+            font-size: 0.85rem;
+            padding: 6px;
+        }
+        .sidebar .submenu a {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+        }
+        .main-content {
+            margin-left: 0;
+            padding: 10px;
+        }
+        .main-content.collapsed {
+            margin-left: 0;
+        }
+        .menu-toggle {
+            display: block;
+        }
+        .sidebar-toggle {
+            display: none;
+        }
+        .admin-dropdown {
+            right: 10px;
+        }
+        .sidebar .submenu {
+            margin-left: 15px;
+        }
+        .search-bar {
+            flex-direction: row;
+            gap: 5px;
+            max-width: 100%;
+        }
+        .search-bar input,
+        .search-bar button {
+            width: auto;
+            padding: 6px;
+            font-size: 0.85rem;
+        }
+        .search-bar input {
+            flex: 1;
+        }
+        .search-bar button {
+            padding: 6px 12px;
+        }
+        .binary-tree-container {
+            height: 300px;
+        }
+        .node-circle {
+            r: 20;
+        }
+        .node-icon {
+            font-size: 16px;
+            transform: translateY(0.5px);
+        }
+        .node-id {
+            font-size: 10px;
+        }
+        .node-details {
+            font-size: 10px;
+        }
+        .child-indicator {
+            font-size: 12px;
+        }
+        .link {
+            stroke-width: 1.5;
+        }
+    }
+    @media (max-width: 480px) {
+        .topbar {
+            padding: 4px;
+        }
+        .topbar h1 {
+            font-size: 1rem;
+        }
+        .topbar .admin-icon {
+            font-size: 1.25rem;
+        }
+        .topbar img {
+            width: 32px;
+            height: 32px;
+        }
+        .sidebar {
+            width: 160px;
+            left: -160px;
+        }
+        .sidebar.active {
+            left: 0;
+        }
+        .sidebar h3 {
+            font-size: 1rem;
+        }
+        .sidebar a {
+            font-size: 0.75rem;
+            padding: 5px;
+        }
+        .sidebar .submenu a {
+            font-size: 0.7rem;
+            padding: 4px 8px;
+        }
+        .search-bar input,
+        .search-bar button {
+            padding: 5px;
+            font-size: 0.8rem;
+        }
+        .binary-tree-container {
+            height: 250px;
+        }
+        .node-circle {
+            r: 16;
+        }
+        .node-icon {
+            font-size: 14px;
+            transform: translateY(0.5px);
+        }
+        .node-id {
+            font-size: 8px;
+        }
+        .node-details {
+            font-size: 8px;
+        }
+        .child-indicator {
+            font-size: 10px;
+        }
+        .link {
+            stroke-width: 1;
+        }
+    }
+</style></head>
 <body> 
   <!-- Topbar -->
   <nav class="topbar text-white flex justify-between items-center">
@@ -390,7 +367,7 @@
       </div>
       
       <a href="withdrawal.html"><i class="fas fa-money-bill"></i> <span>Withdraw</span></a>
-      <a href="wallet.html"><i class="fas fa-wallet"></i> <span>Wallet</span></a>
+      <a href="wallet.html"><i class="fas fa-wallet"></i> <span>SavingsWallet</span></a>
      
       <a href="#" id="sidebar-sign-out"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a>
     </div>
@@ -400,131 +377,140 @@
       <div class="section">
         <h2 class="text-2xl font-bold text-[#f4c430] mb-4">Binary Tree</h2>
         <div class="table-section">
-          <h4>Binary Tree</h4>
-          <div class="search-bar">
-            <input type="text" id="search-id" placeholder="Enter ID (e.g., RI001)">
-            <button onclick="searchNode()">Search</button>
-          </div>
-          <div class="binary-tree-container">
-            <svg class="binary-tree-svg">
-              <!-- Links -->
-              <path class="link" d="M0,78 L-200,178"></path>
-              <path class="link" d="M0,78 L200,178"></path>
-              <path class="link" d="M-200,178 L-300,278"></path>
-              <path class="link" d="M-200,178 L-100,278"></path>
-              <path class="link" d="M200,178 L100,278"></path>
-              <path class="link" d="M200,178 L300,278"></path>
+            <h4>Binary Tree</h4>
+            <div class="search-bar">
+                <input type="text" id="search-id" placeholder="Enter ID (e.g., RI001)">
+                <button onclick="searchNode()">Search</button>
+            </div>
+            <div class="binary-tree-container">
+                <svg class="binary-tree-svg">
+                    <!-- Links -->
+                    <path class="link" d="M0,78 L-200,178"></path>
+                    <path class="link" d="M0,78 L200,178"></path>
+                    <path class="link" d="M-200,178 L-300,278"></path>
+                    <path class="link" d="M-200,178 L-100,278"></path>
+                    <path class="link" d="M200,178 L100,278"></path>
+                    <path class="link" d="M200,178 L300,278"></path>
+                    <path class="link" d="M-300,278 L-350,378"></path>
+                    <path class="link" d="M-300,278 L-250,378"></path>
 
-              <!-- Node RI001 -->
-              <g class="node" data-id="RI001">
-                <circle class="node-circle" cx="0" cy="50" r="28"></circle>
-                <text class="node-icon" x="0" y="50" text-anchor="middle">👤</text>
-                <g class="child-indicators-group" style="visibility: hidden;">
-                  <text class="child-indicator" x="-38" y="50" text-anchor="middle">◄</text>
-                  <text class="child-indicator" x="38" y="50" text-anchor="middle">►</text>
-                </g>
-                <text class="node-id" x="0" y="88" text-anchor="middle">RI001 (Varun)</text>
-                <g class="node-details-group" style="visibility: hidden;">
-                  <text class="node-details" x="38" y="25">Name: Varun</text>
-                  <text class="node-details" x="38" y="40">E-Mail: varun@gmail.com</text>
-                  <text class="node-details" x="38" y="55">CFP: 0BV</text>
-                  <text class="node-details" x="38" y="70">Number: 9876543210</text>
-                </g>
-              </g>
+                    <!-- Node RI001 -->
+                    <g class="node" data-id="RI001">
+                        <circle class="node-circle" cx="0" cy="50" r="28"></circle>
+                        <text class="node-icon" x="0" y="50" text-anchor="middle">👤</text>
+                        <g class="child-indicators-group" style="visibility: hidden;">
+                            <text class="child-indicator" x="-38" y="55" text-anchor="middle">◄</text>
+                            <text class="child-indicator" x="38" y="55" text-anchor="middle">►</text>
+                        </g>
+                        <text class="node-id" x="0" y="88" text-anchor="middle">RI001 (Varun)</text>
+                        <g class="node-details-group" style="visibility: hidden;">
+                            <text class="node-details" x="38" y="25">Name: Varun</text>
+                            <text class="node-details" x="38" y="40">E-Mail: varun@gmail.com</text>
+                            <text class="node-details" x="38" y="55">CFP: 0RV</text>
+                            <text class="node-details" x="38" y="70">Number: 9876543210</text>
+                        </g>
+                    </g>
 
-              <!-- Node RI002 -->
-              <g class="node" data-id="RI002">
-                <circle class="node-circle" cx="-200" cy="150" r="28"></circle>
-                <text class="node-icon" x="-200" y="150" text-anchor="middle">👤</text>
-                <g class="child-indicators-group" style="visibility: hidden;">
-                  <text class="child-indicator" x="-238" y="150" text-anchor="middle">◄</text>
-                  <text class="child-indicator" x="-162" y="150" text-anchor="middle">►</text>
-                </g>
-                <text class="node-id" x="-200" y="188" text-anchor="middle">RI002 (Kiran)</text>
-                <g class="node-details-group" style="visibility: hidden;">
-                  <text class="node-details" x="-162" y="125">Name: Kiran</text>
-                  <text class="node-details" x="-162" y="140">E-Mail: kiran@gmail.com</text>
-                  <text class="node-details" x="-162" y="155">CFP: 100BV</text>
-                  <text class="node-details" x="-162" y="170">Number: 9276543232</text>
-                </g>
-              </g>
+                    <!-- Node RI002 -->
+                    <g class="node" data-id="RI002">
+                        <circle class="node-circle" cx="-200" cy="150" r="28"></circle>
+                        <text class="node-icon" x="-200" y="150" text-anchor="middle">👤</text>
+                        <g class="child-indicators-group" style="visibility: hidden;">
+                            <text class="child-indicator" x="-238" y="155" text-anchor="middle">◄</text>
+                            <text class="child-indicator" x="-162" y="155" text-anchor="middle">►</text>
+                        </g>
+                        <text class="node-id" x="-200" y="188" text-anchor="middle">RI002 (Kiran)</text>
+                        <g class="node-details-group" style="visibility: hidden;">
+                            <text class="node-details" x="-162" y="125">Name: Kiran</text>
+                            <text class="node-details" x="-162" y="140">E-Mail: kiran@gmail.com</text>
+                            <text class="node-details" x="-162" y="155">CFP: 100RV</text>
+                            <text class="node-details" x="-162" y="170">Number: 9276543232</text>
+                        </g>
+                    </g>
 
-              <!-- Node RI003 -->
-              <g class="node" data-id="RI003">
-                <circle class="node-circle" cx="200" cy="150" r="28"></circle>
-                <text class="node-icon" x="200" y="150" text-anchor="middle">👤</text>
-                <g class="child-indicators-group" style="visibility: hidden;">
-                  <text class="child-indicator" x="162" y="150" text-anchor="middle">◄</text>
-                  <text class="child-indicator" x="238" y="150" text-anchor="middle">►</text>
-                </g>
-                <text class="node-id" x="200" y="188" text-anchor="middle">RI003 (Johnson)</text>
-                <g class="node-details-group" style="visibility: hidden;">
-                  <text class="node-details" x="238" y="125">Name: Johnson</text>
-                  <text class="node-details" x="238" y="140">E-Mail: john.j@gmail.com</text>
-                  <text class="node-details" x="238" y="155">CFP: 0BV</text>
-                  <text class="node-details" x="238" y="170">Number: 8876543210</text>
-                </g>
-              </g>
+                    <!-- Node RI003 -->
+                    <g class="node" data-id="RI003">
+                        <circle class="node-circle" cx="200" cy="150" r="28"></circle>
+                        <text class="node-icon" x="200" y="150" text-anchor="middle">👤</text>
+                        <g class="child-indicators-group" style="visibility: hidden;">
+                            <text class="child-indicator" x="162" y="155" text-anchor="middle">◄</text>
+                            <text class="child-indicator" x="238" y="155" text-anchor="middle">►</text>
+                        </g>
+                        <text class="node-id" x="200" y="188" text-anchor="middle">RI003 (Johnson)</text>
+                        <g class="node-details-group" style="visibility: hidden;">
+                            <text class="node-details" x="238" y="125">Name: Johnson</text>
+                            <text class="node-details" x="238" y="140">E-Mail: john.j@gmail.com</text>
+                            <text class="node-details" x="238" y="155">CFP: 0RV</text>
+                            <text class="node-details" x="238" y="170">Number: 8876543210</text>
+                        </g>
+                    </g>
 
-              <!-- Node RI004 -->
-              <g class="node" data-id="RI004">
-                <circle class="node-circle" cx="-300" cy="250" r="28"></circle>
-                <text class="node-icon" x="-300" y="250" text-anchor="middle">👤</text>
-                <g class="child-indicators-group" style="visibility: hidden;"></g>
-                <text class="node-id" x="-300" y="288" text-anchor="middle">RI004 (Emily)</text>
-                <g class="node-details-group" style="visibility: hidden;">
-                  <text class="node-details" x="-262" y="225">Name: Emily</text>
-                  <text class="node-details" x="-262" y="240">E-Mail: emily.b@gmail.com</text>
-                  <text class="node-details" x="-262" y="255">CFP: 0BV</text>
-                  <text class="node-details" x="-262" y="270">Number: 8736543210</text>
-                </g>
-              </g>
+                    <!-- Node RI004 -->
+                    <g class="node" data-id="RI004">
+                        <circle class="node-circle" cx="-300" cy="250" r="28"></circle>
+                        <text class="node-icon" x="-300" y="250" text-anchor="middle">👤</text>
+                        <g class="child-indicators-group" style="visibility: hidden;">
+                            <text class="child-indicator" x="-338" y="255" text-anchor="middle">◄</text>
+                            <text class="child-indicator" x="-262" y="255" text-anchor="middle">►</text>
+                        </g>
+                        <text class="node-id" x="-300" y="288" text-anchor="middle">RI004 (Emily)</text>
+                        <g class="node-details-group" style="visibility: hidden;">
+                            <text class="node-details" x="-262" y="225">Name: Emily</text>
+                            <text class="node-details" x="-262" y="240">E-Mail: emily.b@gmail.com</text>
+                            <text class="node-details" x="-262" y="255">CFP: 0RV</text>
+                            <text class="node-details" x="-262" y="270">Number: 8736543210</text>
+                        </g>
+                    </g>
 
-              <!-- Node RI005 -->
-              <g class="node" data-id="RI005">
-                <circle class="node-circle" cx="-100" cy="250" r="28"></circle>
-                <text class="node-icon" x="-100" y="250" text-anchor="middle">👤</text>
-                <g class="child-indicators-group" style="visibility: hidden;"></g>
-                <text class="node-id" x="-100" y="288" text-anchor="middle">RI005 (David)</text>
-                <g class="node-details-group" style="visibility: hidden;">
-                  <text class="node-details" x="-62" y="225">Name: David</text>
-                  <text class="node-details" x="-62" y="240">E-Mail: david.w@gmail.com</text>
-                  <text class="node-details" x="-62" y="255">CFP: 0BV</text>
-                  <text class="node-details" x="-62" y="270">Number: 6856543210</text>
-                </g>
-              </g>
+                    <!-- Node RI005 -->
+                    <g class="node" data-id="RI005">
+                        <circle class="node-circle" cx="-100" cy="250" r="28"></circle>
+                        <text class="node-icon" x="-100" y="250" text-anchor="middle">👤</text>
+                        <g class="child-indicators-group" style="visibility: hidden;"></g>
+                        <text class="node-id" x="-100" y="288" text-anchor="middle">RI005 (David)</text>
+                        <g class="node-details-group" style="visibility: hidden;">
+                            <text class="node-details" x="-62" y="225">Name: David</text>
+                            <text class="node-details" x="-62" y="240">E-Mail: david.w@gmail.com</text>
+                            <text class="node-details" x="-62" y="255">CFP: 0RV</text>
+                            <text class="node-details" x="-62" y="270">Number: 6856543210</text>
+                        </g>
+                    </g>
 
-              <!-- Node RI006 -->
-              <g class="node" data-id="RI006">
-                <circle class="node-circle" cx="100" cy="250" r="28"></circle>
-                <text class="node-icon" x="100" y="250" text-anchor="middle">👤</text>
-                <g class="child-indicators-group" style="visibility: hidden;"></g>
-                <text class="node-id" x="100" y="288" text-anchor="middle">RI006 (Sarah)</text>
-                <g class="node-details-group" style="visibility: hidden;">
-                  <text class="node-details" x="138" y="225">Name: Sarah</text>
-                  <text class="node-details" x="138" y="240">E-Mail: sarah.k@gmail.com</text>
-                  <text class="node-details" x="138" y="255">CFP: 0BV</text>
-                  <text class="node-details" x="138" y="270">Number: 9123456789</text>
-                </g>
-              </g>
+                    <!-- Node RI006 -->
+                    <g class="node" data-id="RI006">
+                        <circle class="node-circle" cx="100" cy="250" r="28"></circle>
+                        <text class="node-icon" x="100" y="250" text-anchor="middle">👤</text>
+                        <g class="child-indicators-group" style="visibility: hidden;">
+                            <text class="child-indicator" x="62" y="255" text-anchor="middle">◄</text>
+                            <text class="child-indicator" x="138" y="255" text-anchor="middle">►</text>
+                        </g>
+                        <text class="node-id" x="100" y="288" text-anchor="middle">RI006 (Sarah)</text>
+                        <g class="node-details-group" style="visibility: hidden;">
+                            <text class="node-details" x="138" y="225">Name: Sarah</text>
+                            <text class="node-details" x="138" y="240">E-Mail: sarah.k@gmail.com</text>
+                            <text class="node-details" x="138" y="255">CFP: 0RV</text>
+                            <text class="node-details" x="138" y="270">Number: 9123456789</text>
+                        </g>
+                    </g>
 
-              <!-- Node RI007 -->
-              <g class="node" data-id="RI007">
-                <circle class="node-circle" cx="300" cy="250" r="28"></circle>
-                <text class="node-icon" x="300" y="250" text-anchor="middle">👤</text>
-                <g class="child-indicators-group" style="visibility: hidden;"></g>
-                <text class="node-id" x="300" y="288" text-anchor="middle">RI007 (Michael)</text>
-                <g class="node-details-group" style="visibility: hidden;">
-                  <text class="node-details" x="338" y="225">Name: Michael</text>
-                  <text class="node-details" x="338" y="240">E-Mail: michael.l@gmail.com</text>
-                  <text class="node-details" x="338" y="255">CFP: 0BV</text>
-                  <text class="node-details" x="338" y="270">Number: 9988776655</text>
-                </g>
-              </g>
-            </svg>
-          </div>
+                    <!-- Node RI007 -->
+                    <g class="node" data-id="RI007">
+                        <circle class="node-circle" cx="300" cy="250" r="28"></circle>
+                        <text class="node-icon" x="300" y="250" text-anchor="middle">👤</text>
+                        <g class="child-indicators-group" style="visibility: hidden;"></g>
+                        <text class="node-id" x="300" y="288" text-anchor="middle">RI007 (Michael)</text>
+                        <g class="node-details-group" style="visibility: hidden;">
+                            <text class="node-details" x="338" y="225">Name: Michael</text>
+                            <text class="node-details" x="338" y="240">E-Mail: michael.l@gmail.com</text>
+                            <text class="node-details" x="338" y="255">CFP: 0RV</text>
+                            <text class="node-details" x="338" y="270">Number: 9988776655</text>
+                        </g>
+                    </g>
+
+                </svg>
+            </div>
         </div>
-      </div>
+    </div>
       <footer class="main-footer">
         @2025 Raanvi - Developed By Raanvi
       </footer>
@@ -618,17 +604,25 @@
         const screenWidth = window.innerWidth;
         const spacingFactor = screenWidth <= 480 ? 0.4 : screenWidth <= 768 ? 0.6 : 1;
         const nodeRadius = screenWidth <= 480 ? 14 : screenWidth <= 768 ? 18 : 28;
-        const ySpacing = screenWidth <= 480 ? 70 : screenWidth <= 768 ? 90 : 120;
+        const ySpacing = 150;
         const offsetX = containerWidth / 2;
 
         const nodes = [
           { id: 'RI001', x: 0, level: 0, left: 'RI002', right: 'RI003' },
-          { id: 'RI002', x: -200, level: 1, left: 'RI004', right: 'RI005' },
-          { id: 'RI003', x: 200, level: 1, left: 'RI006', right: 'RI007' },
-          { id: 'RI004', x: screenWidth <= 768 ? -375 : -300, level: 2, left: null, right: null },
-          { id: 'RI005', x: screenWidth <= 768 ? -125 : -100, level: 2, left: null, right: null },
-          { id: 'RI006', x: screenWidth <= 768 ? 125 : 100, level: 2, left: null, right: null },
-          { id: 'RI007', x: screenWidth <= 768 ? 375 : 300, level: 2, left: null, right: null }
+          { id: 'RI002', x: -300, level: 1, left: 'RI004', right: 'RI005' },
+          { id: 'RI003', x: 300, level: 1, left: 'RI006', right: 'RI007' },
+          { id: 'RI004', x: screenWidth <= 768 ? -562.5 : -450, level: 2, left: 'RI008', right: 'RI009' },
+          { id: 'RI005', x: screenWidth <= 768 ? -187.5 : -150, level: 2, left: 'RI010', right: 'RI011' },
+          { id: 'RI006', x: screenWidth <= 768 ? 187.5 : 150, level: 2, left: 'RI012', right: 'RI013' },
+          { id: 'RI007', x: screenWidth <= 768 ? 562.5 : 450, level: 2, left: 'RI014', right: 'RI015' },
+          { id: 'RI008', x: screenWidth <= 768 ? -675 : -525, level: 3, left: null, right: null },
+          { id: 'RI009', x: screenWidth <= 768 ? -450 : -375, level: 3, left: null, right: null },
+          { id: 'RI010', x: screenWidth <= 768 ? -337.5 : -225, level: 3, left: null, right: null },
+          { id: 'RI011', x: screenWidth <= 768 ? -112.5 : -75, level: 3, left: null, right: null },
+          { id: 'RI012', x: screenWidth <= 768 ? 112.5 : 75, level: 3, left: null, right: null },
+          { id: 'RI013', x: screenWidth <= 768 ? 337.5 : 225, level: 3, left: null, right: null },
+          { id: 'RI014', x: screenWidth <= 768 ? 450 : 375, level: 3, left: null, right: null },
+          { id: 'RI015', x: screenWidth <= 768 ? 675 : 525, level: 3, left: null, right: null }
         ];
 
         nodes.forEach(node => {
@@ -666,7 +660,15 @@
           { from: 'RI002', to: 'RI004' },
           { from: 'RI002', to: 'RI005' },
           { from: 'RI003', to: 'RI006' },
-          { from: 'RI003', to: 'RI007' }
+          { from: 'RI003', to: 'RI007' },
+          { from: 'RI004', to: 'RI008' },
+          { from: 'RI004', to: 'RI009' },
+          { from: 'RI005', to: 'RI010' },
+          { from: 'RI005', to: 'RI011' },
+          { from: 'RI006', to: 'RI012' },
+          { from: 'RI006', to: 'RI013' },
+          { from: 'RI007', to: 'RI014' },
+          { from: 'RI007', to: 'RI015' }
         ];
 
         paths.forEach((path, index) => {
