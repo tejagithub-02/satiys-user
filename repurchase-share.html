@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Satiys Client Dashboard - Rank and Reward</title>
+  <title>Satiys Client Dashboard - repurchase share Income</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="assets/style.css" rel="stylesheet">
- 
+  
 </head>
 <body>
   <!-- Topbar -->
@@ -27,6 +27,7 @@
       <div class="admin-dropdown" id="admin-dropdown">
         <a href="profile.html" class="dropdown-item">My Profile</a>
         <a href="change-password.html" class="dropdown-item">Change Password</a>
+       
       </div>
     </div>
   </nav>
@@ -37,7 +38,7 @@
     <div class="sidebar">
       <i class="fas fa-times sidebar-expand" id="sidebar-expand"></i>
       <h3></h3>
-      <a href="index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+      <a href="index.html" ><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
       <div class="sidebar-item">
         <a href="my-account.html" id="my-account-toggle">
           <i class="fas fa-user"></i>
@@ -49,6 +50,7 @@
           <a href="kyc-document.html"><i class="fas fa-file-upload"></i> <span>Upload KYC Document</span></a>
           <a href="change-password.html"><i class="fas fa-lock"></i> <span>Change Password</span></a>
           <a href="id-card.html"><i class="fas fa-lock"></i> <span>ID Card</span></a>
+      
         </div>
       </div>
       <div class="sidebar-item">
@@ -71,13 +73,13 @@
           <i class="fas fa-chevron-down dropdown-icon"></i>
         </a>
         <div class="submenu" id="earning-history-submenu">
-          <a href="referral-bonus.html"><i class="fas fa-gift"></i> <span>Referral Bonus</span></a>
-          <a href="leadership-bonus.html"><i class="fas fa-trophy"></i> <span>Leadership Bonus</span></a>
-          <a href="direct-repurchase.html"><i class="fas fa-shopping-cart"></i> <span>Direct Repurchase Income</span></a>
-          <a href="repurchase-share.html"><i class="fas fa-coins"></i> <span>Repurchase Share Income</span></a>
-
-          <a href="rank-reward.html" class="active"><i class="fas fa-medal"></i> <span>Rank and Reward</span></a>
-         
+            <a href="referral-bonus.html"><i class="fas fa-gift"></i> <span>Referral Bonus</span></a>
+            <a href="leadership-bonus.html"><i class="fas fa-trophy"></i> <span>Leadership Bonus</span></a>
+            <a href="direct-repurchase.html"><i class="fas fa-shopping-cart"></i> <span>Direct Repurchase Income</span></a>
+            <a href="repurchase-share.html" class="active"><i class="fas fa-coins"></i> <span>Repurchase Share Income</span></a>
+  
+            <a href="rank-reward.html"><i class="fas fa-medal"></i> <span>Rank and Reward</span></a>
+           
         </div>
       </div>
       <div class="sidebar-item">
@@ -92,135 +94,66 @@
           <a href="repurchase.html"><i class="fas fa-shopping-cart"></i> <span>Repurchase</span></a>
         </div>
       </div>
-      
+      <a href="customer.html"><i class="fas fa-users-cog"></i> <span>Customer Details</span></a>
+      <a href="billing.html"><i class="fas fa-file-invoice-dollar"></i> <span>Billing Management</span></a>
+      <a href="stock.html"><i class="fas fa-boxes"></i> <span>Stock Management</span></a>
+      <a href="turnover.html"><i class="fas fa-chart-line"></i> <span>Turnover</span></a>
       <a href="withdrawal.html"><i class="fas fa-money-bill"></i> <span>Withdraw</span></a>
+      
       <a href="wallet.html"><i class="fas fa-wallet"></i> <span>Savings Wallet</span></a>
+      
       <a href="#" id="sidebar-sign-out"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a>
     </div>
 
-    <!-- Rank and Reward Section -->
+    <!-- Referral Bonus Section -->
     <div class="main-content">
       <div class="section">
-        <h2 class="text-2xl font-bold text-[#f4c430] mb-4">Rank and Reward</h2>
-        <p class="text-[#e0e0e0] mb-4">View your achievements and rewards based on your rank in Satiys.</p>
+        <h2 class="text-2xl font-bold text-[#f4c430] mb-4">Direct repurchase-share Income</h2>
+        <p class="text-[#e0e0e0] mb-4">View your earnings from repurchase Share Income Satiys.</p>
         <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>SI.NO</th>
-               
-                <th>Date</th>
-                <th>Rank Name</th>
-                <th>Pair</th>
-                <th>Reward</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                
-                <td>2025-05-07</td>
-                <td>MANAGER</td>
-                <td>3</td>
-                <td>T-Shirt</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                
-                <td>2025-05-10</td>
-                <td>SENIOR MANAGER</td>
-                <td>6</td>
-                <td>T-Shirt and Bag</td>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>SI.NO</th>
+                    <th>Date</th>
+                    <th>User ID</th>
+                    <th>Member Name</th>
+                    <th>Repurchase Amount</th>
+                    <th>Repurchase Share Income</th>
+                    <th>BV Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>2025-06-02</td>
+                    <td>USR30303</td>
+                    <td>Rahul Sharma</td>
+                    <td>₹3,000.00</td>
+                    <td>₹300.00</td>
+                    <td>120</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>2025-06-04</td>
+                    <td>USR40404</td>
+                    <td>Anita Verma</td>
+                    <td>₹1,500.00</td>
+                    <td>₹150.00</td>
+                    <td>60</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>2025-06-05</td>
+                    <td>USR50505</td>
+                    <td>Sunil Joshi</td>
+                    <td>₹4,000.00</td>
+                    <td>₹400.00</td>
+                    <td>160</td>
+                  </tr>
+                </tbody>
+              </table>
               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                
-                <td>2025-05-05</td>
-                <td>SILVER MANAGER</td>
-                <td>36</td>
-                <td>Shirt and Mobile</td>
-              
-                <td>pending</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                
-                <td>2025-05-08</td>
-                <td>GOLD MANAGER</td>
-                <td>216</td>
-                <td>Shirt and Laptop</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>5</td>
-               
-                <td>2025-04-10</td>
-                <td>DIAMOND MANAGER</td>
-                <td>1296</td>
-                <td>Shirt and Bike</td>
-
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                
-                <td>2025-05-10</td>
-                <td>BLUE DIAMOND MANAGER</td>
-                <td>7776</td>
-                <td>Shirt and Car</td>
-              
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                
-                <td>2025-06-10</td>
-                <td>PLATINUM MANAGER</td>
-                <td>46656</td>
-               
-                <td>Site 30x40d</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>8</td>
-               
-                <td>2025-05-20</td>
-                <td>FOUNDER</td>
-                <td>279936</td>
-                <td>7 Seater Car</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>9</td>
-               
-                <td>2025-10-10</td>
-                <td>DIRECTOR</td>
-                <td>1679616</td>
-                <td>Site 60x80</td>
-               
-                <td>Pending</td>
-              </tr>
-              <tr>
-                <td>10</td>
-                
-                <td>2025-05-15</td>
-                <td>CHAIRMAN</td>
-                <td>10077696</td>
-                <td>Villa</td>
-                
-                <td>Pending</td>
-              </tr>
-              
-            </tbody>
-          </table>
         </div>
       </div>
       <footer class="main-footer">
@@ -239,6 +172,7 @@
       const adminIcon = document.getElementById('admin-icon');
       const adminDropdown = document.getElementById('admin-dropdown');
 
+      // Function to close all submenus
       function closeAllSubmenus() {
         document.querySelectorAll('.submenu').forEach(submenu => {
           submenu.classList.remove('active');
@@ -248,6 +182,7 @@
         });
       }
 
+      // Sidebar collapse/expand for desktop
       if (sidebarToggle && sidebarExpand && sidebar && mainContent) {
         sidebarToggle.addEventListener('click', () => {
           const isCollapsed = sidebar.classList.toggle('collapsed');
@@ -263,12 +198,14 @@
         });
       }
 
+      // Sidebar toggle for mobile
       if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
           sidebar.classList.toggle('active');
         });
       }
 
+      // Admin dropdown toggle
       if (adminIcon && adminDropdown) {
         adminIcon.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -282,6 +219,7 @@
         });
       }
 
+      // Main menu toggles
       const mainMenuToggles = [
         {
           toggle: document.getElementById('my-account-toggle'),
@@ -305,6 +243,7 @@
         }
       ];
 
+      // Special handling for nested Product-Details menu
       const productDetailsToggle = document.getElementById('product-details-toggle');
       const productDetailsSubmenu = document.getElementById('product-details-submenu');
       const productDetailsIcon = document.querySelector('#product-details-toggle .dropdown-icon');
@@ -312,11 +251,12 @@
       if (productDetailsToggle && productDetailsSubmenu && productDetailsIcon) {
         productDetailsToggle.addEventListener('click', function(e) {
           e.preventDefault();
-          e.stopPropagation();
+          e.stopPropagation(); // Prevent event from bubbling to parent menus
           
           const isActive = productDetailsSubmenu.classList.toggle('active');
           productDetailsIcon.classList.toggle('active');
           
+          // Keep parent menu open when clicking nested menu
           const parentSubmenu = productDetailsToggle.closest('.submenu');
           if (parentSubmenu) {
             parentSubmenu.classList.add('active');
@@ -330,6 +270,7 @@
           }
         });
 
+        // Handle clicks on product details submenu links
         const productDetailsLinks = productDetailsSubmenu.querySelectorAll('a');
         productDetailsLinks.forEach(link => {
           link.addEventListener('click', () => {
@@ -340,6 +281,7 @@
         });
       }
 
+      // Handle main menu toggles
       mainMenuToggles.forEach(({ toggle, submenu, icon }) => {
         if (toggle && submenu && icon) {
           toggle.addEventListener('click', function(e) {
@@ -349,6 +291,7 @@
             const isActive = submenu.classList.toggle('active');
             icon.classList.toggle('active');
             
+            // Close other submenus at the same level
             const parentItem = toggle.closest('.sidebar-item');
             if (parentItem) {
               const siblings = parentItem.parentElement.querySelectorAll('.sidebar-item');
@@ -365,6 +308,7 @@
             }
           });
 
+          // Handle clicks on submenu links (excluding nested menu toggles)
           const submenuLinks = submenu.querySelectorAll('a:not(.sidebar-item > a)');
           submenuLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -376,7 +320,9 @@
         }
       });
 
+      // Close submenus when clicking outside
       document.addEventListener('click', (e) => {
+        // Check if click is outside any menu
         const clickedInsideSidebar = sidebar.contains(e.target);
         const clickedAdminDropdown = adminDropdown.contains(e.target) || adminIcon.contains(e.target);
         
@@ -385,6 +331,6 @@
         }
       });
     });
-  </script>
+</script>
 </body>
 </html>

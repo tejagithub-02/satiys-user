@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Satiys Client Dashboard - Rank and Reward</title>
+  <title>Satiys Client Dashboard - Billing Management</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="assets/style.css" rel="stylesheet">
- 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <!-- Topbar -->
@@ -16,7 +16,6 @@
     <div class="flex items-center space-x-4">
       <i class="fas fa-bars sidebar-toggle hidden md:block text-white" id="sidebar-toggle"></i>
       <i class="fas fa-bars menu-toggle block md:hidden text-white" id="menu-toggle"></i>    
-      <!-- Increased scale to 150% -->
       <img src="images/logo.png" alt="Satiys Logo" class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain transform scale-150">    
       <span style="font-family: Georgia, serif; color: #0A1A2F; text-shadow: 1px 1px 2px #FFD700, 0 0 5px #FFD700; font-size: 1.6rem; font-weight: bold; letter-spacing: 2px;">
         SATIYS
@@ -75,9 +74,7 @@
           <a href="leadership-bonus.html"><i class="fas fa-trophy"></i> <span>Leadership Bonus</span></a>
           <a href="direct-repurchase.html"><i class="fas fa-shopping-cart"></i> <span>Direct Repurchase Income</span></a>
           <a href="repurchase-share.html"><i class="fas fa-coins"></i> <span>Repurchase Share Income</span></a>
-
-          <a href="rank-reward.html" class="active"><i class="fas fa-medal"></i> <span>Rank and Reward</span></a>
-         
+          <a href="rank-reward.html"><i class="fas fa-medal"></i> <span>Rank and Reward</span></a>
         </div>
       </div>
       <div class="sidebar-item">
@@ -87,150 +84,216 @@
           <i class="fas fa-chevron-down dropdown-icon"></i>
         </a>
         <div class="submenu" id="topup-fund-submenu">
-          <a href="transaction-details.html" ><i class="fas fa-receipt"></i> <span>Transaction Details</span></a>
+          <a href="transaction-details.html"><i class="fas fa-receipt"></i> <span>Transaction Details</span></a>
           <a href="product-details.html"><i class="fas fa-shopping-bag"></i> <span>Order Product</span></a>
           <a href="repurchase.html"><i class="fas fa-shopping-cart"></i> <span>Repurchase</span></a>
         </div>
       </div>
-      
+      <a href="customer.html"><i class="fas fa-users-cog"></i> <span>Customer Details</span></a>
+      <a href="billing.html" class="active"><i class="fas fa-file-invoice-dollar"></i> <span>Billing Management</span></a>
+      <a href="stock.html"><i class="fas fa-boxes"></i> <span>Stock Management</span></a>
+      <a href="turnover.html"><i class="fas fa-chart-line"></i> <span>Turnover</span></a>
       <a href="withdrawal.html"><i class="fas fa-money-bill"></i> <span>Withdraw</span></a>
-      <a href="wallet.html"><i class="fas fa-wallet"></i> <span>Savings Wallet</span></a>
+      <a href="wallet.html"><i class="fas fa-wallet"></i> <span>Savings Wallet</span></a> <a href="billing-management.html" class="active"><i class="fas fa-file-invoice-dollar"></i> <span>Billing Management</span></a>
       <a href="#" id="sidebar-sign-out"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a>
     </div>
 
-    <!-- Rank and Reward Section -->
+    <!-- Billing Management Section -->
     <div class="main-content">
       <div class="section">
-        <h2 class="text-2xl font-bold text-[#f4c430] mb-4">Rank and Reward</h2>
-        <p class="text-[#e0e0e0] mb-4">View your achievements and rewards based on your rank in Satiys.</p>
+        <h2 class="text-2xl font-bold text-[#f4c430] mb-4">Billing Management</h2>
+        <p class="text-[#e0e0e0] mb-4">View and manage your billing history and invoices.</p>
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th>SI.NO</th>
-               
+                <th>Invoice No</th>
                 <th>Date</th>
-                <th>Rank Name</th>
-                <th>Pair</th>
-                <th>Reward</th>
-                <th>Status</th>
+                <th>User ID</th>
+                <th>Customer Name</th>
+                <th>Item(s)</th>
+                <th>Total Amount</th>
+                <th>Payment Status</th>
+                <th>Billing Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>1</td>
-                
-                <td>2025-05-07</td>
-                <td>MANAGER</td>
-                <td>3</td>
-                <td>T-Shirt</td>
-               
-                <td>Approved</td>
+                <td>INV1001</td>
+                <td>2025-06-01</td>
+                <td>USR10101</td>
+                <td>Ravi Kumar</td>
+                <td>Product A, Product B</td>
+                <td>₹7,200.00</td>
+                <td>Paid</td>
+                <td>Billed</td>
+                <td><button class="btn btn-sm btn-primary download-invoice" data-invoice='{"si_no":"1","invoice_no":"INV1001","date":"2025-06-01","user_id":"USR10101","customer_name":"Ravi Kumar","items":"Product A, Product B","total_amount":"₹7,200.00","payment_status":"Paid","billing_status":"Billed"}'><i class="fas fa-download"></i> Download</button></td>
               </tr>
               <tr>
                 <td>2</td>
-                
-                <td>2025-05-10</td>
-                <td>SENIOR MANAGER</td>
-                <td>6</td>
-                <td>T-Shirt and Bag</td>
-              
-                <td>Approved</td>
+                <td>INV1002</td>
+                <td>2025-06-03</td>
+                <td>USR20202</td>
+                <td>Sita Devi</td>
+                <td>Product C</td>
+                <td>₹2,500.00</td>
+                <td>Unpaid</td>
+                <td>Pending</td>
+                <td><button class="btn btn-sm btn-primary download-invoice" data-invoice='{"si_no":"2","invoice_no":"INV1002","date":"2025-06-03","user_id":"USR20202","customer_name":"Sita Devi","items":"Product C","total_amount":"₹2,500.00","payment_status":"Unpaid","billing_status":"Pending"}'><i class="fas fa-download"></i> Download</button></td>
               </tr>
               <tr>
                 <td>3</td>
-                
-                <td>2025-05-05</td>
-                <td>SILVER MANAGER</td>
-                <td>36</td>
-                <td>Shirt and Mobile</td>
-              
-                <td>pending</td>
+                <td>INV1003</td>
+                <td>2025-06-05</td>
+                <td>USR30303</td>
+                <td>Rahul Sharma</td>
+                <td>Product A, Product D</td>
+                <td>₹5,400.00</td>
+                <td>Paid</td>
+                <td>Billed</td>
+                <td><button class="btn btn-sm btn-primary download-invoice" data-invoice='{"si_no":"3","invoice_no":"INV1003","date":"2025-06-05","user_id":"USR30303","customer_name":"Rahul Sharma","items":"Product A, Product D","total_amount":"₹5,400.00","payment_status":"Paid","billing_status":"Billed"}'><i class="fas fa-download"></i> Download</button></td>
               </tr>
               <tr>
                 <td>4</td>
-                
-                <td>2025-05-08</td>
-                <td>GOLD MANAGER</td>
-                <td>216</td>
-                <td>Shirt and Laptop</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>5</td>
-               
-                <td>2025-04-10</td>
-                <td>DIAMOND MANAGER</td>
-                <td>1296</td>
-                <td>Shirt and Bike</td>
-
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                
-                <td>2025-05-10</td>
-                <td>BLUE DIAMOND MANAGER</td>
-                <td>7776</td>
-                <td>Shirt and Car</td>
-              
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                
-                <td>2025-06-10</td>
-                <td>PLATINUM MANAGER</td>
-                <td>46656</td>
-               
-                <td>Site 30x40d</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>8</td>
-               
-                <td>2025-05-20</td>
-                <td>FOUNDER</td>
-                <td>279936</td>
-                <td>7 Seater Car</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>9</td>
-               
-                <td>2025-10-10</td>
-                <td>DIRECTOR</td>
-                <td>1679616</td>
-                <td>Site 60x80</td>
-               
+                <td>INV1004</td>
+                <td>2025-06-07</td>
+                <td>USR40404</td>
+                <td>Anita Verma</td>
+                <td>Product E</td>
+                <td>₹1,800.00</td>
                 <td>Pending</td>
+                <td>On Hold</td>
+                <td><button class="btn btn-sm btn-primary download-invoice" data-invoice='{"si_no":"4","invoice_no":"INV1004","date":"2025-06-07","user_id":"USR40404","customer_name":"Anita Verma","items":"Product E","total_amount":"₹1,800.00","payment_status":"Pending","billing_status":"On Hold"}'><i class="fas fa-download"></i> Download</button></td>
               </tr>
-              <tr>
-                <td>10</td>
-                
-                <td>2025-05-15</td>
-                <td>CHAIRMAN</td>
-                <td>10077696</td>
-                <td>Villa</td>
-                
-                <td>Pending</td>
-              </tr>
-              
             </tbody>
           </table>
         </div>
       </div>
       <footer class="main-footer">
-        @2025 Satiys - Developed By Bloom It Solutions
+        @2025 Satiys
       </footer>
     </div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const { jsPDF } = window.jspdf;
+
+      // Function to generate and download PDF for an invoice
+      function generateInvoicePDF(invoiceData) {
+        const doc = new jsPDF();
+
+        // Header
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(20);
+        doc.setTextColor(40, 40, 40);
+        doc.text('Satiys Invoice', 105, 20, { align: 'center' });
+
+        // Company Details
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(12);
+        doc.setTextColor(100, 100, 100);
+        doc.text('Satiys Corporation', 20, 35);
+        doc.text('123 Business Avenue, City, Country', 20, 42);
+        doc.text('Email: contact@satiys.com', 20, 49);
+
+        // Invoice Details
+        doc.setFontSize(12);
+        doc.setTextColor(40, 40, 40);
+        doc.text(`Invoice No: ${invoiceData.invoice_no}`, 140, 35);
+        doc.text(`Date: ${invoiceData.date}`, 140, 42);
+
+        // Line Separator
+        doc.setLineWidth(0.5);
+        doc.setDrawColor(200, 200, 200);
+        doc.line(20, 60, 190, 60);
+
+        // Customer Details
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(12);
+        doc.text('Billed To:', 20, 70);
+        doc.setFont('helvetica', 'normal');
+        doc.text(`${invoiceData.customer_name}`, 20, 78);
+        doc.text(`User ID: ${invoiceData.user_id}`, 20, 86);
+
+        // Table Header
+        const tableStartY = 100;
+        const columnWidths = [50, 40, 40, 20]; // Increased width for Item(s)
+        const headers = ['Item(s)', 'Total Amount', 'Payment Status', 'Billing Status'];
+        
+        doc.setFillColor(240, 240, 240);
+        doc.rect(20, tableStartY, 170, 10, 'F');
+        
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(40, 40, 40);
+        let x = 20;
+        headers.forEach((header, i) => {
+          doc.text(header, x + 2, tableStartY + 7);
+          x += columnWidths[i];
+        });
+
+        // Table Row
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(60, 60, 60);
+        x = 20;
+        const rowData = [
+          invoiceData.items,
+          invoiceData.total_amount,
+          invoiceData.payment_status,
+          invoiceData.billing_status
+        ];
+        
+        // Split long item text to prevent overflow
+        const maxWidth = columnWidths[0] - 4; // Account for padding
+        const splitItems = doc.splitTextToSize(rowData[0], maxWidth);
+        let y = tableStartY + 17;
+        splitItems.forEach(line => {
+          doc.text(line, x + 2, y);
+          y += 7;
+        });
+
+        // Draw other columns
+        x += columnWidths[0];
+        rowData.slice(1).forEach((data, i) => {
+          doc.text(data, x + 2, tableStartY + 17);
+          x += columnWidths[i + 1];
+        });
+
+        // Table Border (adjusted for potential multi-line items)
+        const tableHeight = Math.max(20, 10 + (splitItems.length * 7));
+        doc.setDrawColor(200, 200, 200);
+        doc.rect(20, tableStartY, 170, tableHeight);
+
+        // Draw vertical lines for table columns
+        x = 20;
+        columnWidths.forEach(width => {
+          doc.line(x, tableStartY, x, tableStartY + tableHeight);
+          x += width;
+        });
+        doc.line(190, tableStartY, 190, tableStartY + tableHeight); // Rightmost line
+
+        // Footer
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+        doc.setTextColor(100, 100, 100);
+        doc.text('@2025 Satiys', 105, 280, { align: 'center' });
+
+        // Save the PDF
+        doc.save(`invoice_${invoiceData.invoice_no}.pdf`);
+      }
+
+      // Add event listeners to download buttons
+      document.querySelectorAll('.download-invoice').forEach(button => {
+        button.addEventListener('click', () => {
+          const invoiceData = JSON.parse(button.getAttribute('data-invoice'));
+          generateInvoicePDF(invoiceData);
+        });
+      });
+
+      // Existing sidebar and menu functionality
       const sidebarToggle = document.getElementById('sidebar-toggle');
       const sidebarExpand = document.getElementById('sidebar-expand');
       const sidebar = document.querySelector('.sidebar');
@@ -304,41 +367,6 @@
           icon: document.querySelector('#topup-fund-toggle .dropdown-icon')
         }
       ];
-
-      const productDetailsToggle = document.getElementById('product-details-toggle');
-      const productDetailsSubmenu = document.getElementById('product-details-submenu');
-      const productDetailsIcon = document.querySelector('#product-details-toggle .dropdown-icon');
-
-      if (productDetailsToggle && productDetailsSubmenu && productDetailsIcon) {
-        productDetailsToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          const isActive = productDetailsSubmenu.classList.toggle('active');
-          productDetailsIcon.classList.toggle('active');
-          
-          const parentSubmenu = productDetailsToggle.closest('.submenu');
-          if (parentSubmenu) {
-            parentSubmenu.classList.add('active');
-            const parentToggle = parentSubmenu.previousElementSibling;
-            if (parentToggle) {
-              const parentIcon = parentToggle.querySelector('.dropdown-icon');
-              if (parentIcon) {
-                parentIcon.classList.add('active');
-              }
-            }
-          }
-        });
-
-        const productDetailsLinks = productDetailsSubmenu.querySelectorAll('a');
-        productDetailsLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-              sidebar.classList.remove('active');
-            }
-          });
-        });
-      }
 
       mainMenuToggles.forEach(({ toggle, submenu, icon }) => {
         if (toggle && submenu && icon) {

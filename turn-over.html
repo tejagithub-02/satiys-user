@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Satiys Client Dashboard - Rank and Reward</title>
+  <title>Satiys Client Dashboard - Turnover</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="assets/style.css" rel="stylesheet">
- 
 </head>
 <body>
   <!-- Topbar -->
@@ -16,7 +15,6 @@
     <div class="flex items-center space-x-4">
       <i class="fas fa-bars sidebar-toggle hidden md:block text-white" id="sidebar-toggle"></i>
       <i class="fas fa-bars menu-toggle block md:hidden text-white" id="menu-toggle"></i>    
-      <!-- Increased scale to 150% -->
       <img src="images/logo.png" alt="Satiys Logo" class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain transform scale-150">    
       <span style="font-family: Georgia, serif; color: #0A1A2F; text-shadow: 1px 1px 2px #FFD700, 0 0 5px #FFD700; font-size: 1.6rem; font-weight: bold; letter-spacing: 2px;">
         SATIYS
@@ -75,9 +73,7 @@
           <a href="leadership-bonus.html"><i class="fas fa-trophy"></i> <span>Leadership Bonus</span></a>
           <a href="direct-repurchase.html"><i class="fas fa-shopping-cart"></i> <span>Direct Repurchase Income</span></a>
           <a href="repurchase-share.html"><i class="fas fa-coins"></i> <span>Repurchase Share Income</span></a>
-
-          <a href="rank-reward.html" class="active"><i class="fas fa-medal"></i> <span>Rank and Reward</span></a>
-         
+          <a href="rank-reward.html"><i class="fas fa-medal"></i> <span>Rank and Reward</span></a>
         </div>
       </div>
       <div class="sidebar-item">
@@ -87,144 +83,68 @@
           <i class="fas fa-chevron-down dropdown-icon"></i>
         </a>
         <div class="submenu" id="topup-fund-submenu">
-          <a href="transaction-details.html" ><i class="fas fa-receipt"></i> <span>Transaction Details</span></a>
+          <a href="transaction-details.html"><i class="fas fa-receipt"></i> <span>Transaction Details</span></a>
           <a href="product-details.html"><i class="fas fa-shopping-bag"></i> <span>Order Product</span></a>
           <a href="repurchase.html"><i class="fas fa-shopping-cart"></i> <span>Repurchase</span></a>
         </div>
       </div>
-      
+      <a href="customer.html"><i class="fas fa-users-cog"></i> <span>Customer Details</span></a>
+      <a href="billing.html"><i class="fas fa-file-invoice-dollar"></i> <span>Billing Management</span></a>
+      <a href="stock.html"><i class="fas fa-boxes"></i> <span>Stock Management</span></a>
+      <a href="#"><i class="fas fa-chart-line"></i> <span>Turnover</span></a>
       <a href="withdrawal.html"><i class="fas fa-money-bill"></i> <span>Withdraw</span></a>
       <a href="wallet.html"><i class="fas fa-wallet"></i> <span>Savings Wallet</span></a>
+     
       <a href="#" id="sidebar-sign-out"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a>
     </div>
 
-    <!-- Rank and Reward Section -->
+    <!-- Turnover Section -->
     <div class="main-content">
       <div class="section">
-        <h2 class="text-2xl font-bold text-[#f4c430] mb-4">Rank and Reward</h2>
-        <p class="text-[#e0e0e0] mb-4">View your achievements and rewards based on your rank in Satiys.</p>
+        <h2 class="text-2xl font-bold text-[#f4c430] mb-4">Turnover</h2>
+        <p class="text-[#e0e0e0] mb-4">View and analyze your monthly turnover and sales performance.</p>
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th>SI.NO</th>
-               
-                <th>Date</th>
-                <th>Rank Name</th>
-                <th>Pair</th>
-                <th>Reward</th>
-                <th>Status</th>
+                <th>Month</th>
+                <th>Total Sales (₹)</th>
+                <th>New Customers</th>
+                <th>Repeat Customers</th>
+                <th>Repurchase Sales (₹)</th>
+                <th>Team Business Volume (BV)</th>
+                <th>Payouts Given (₹)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>1</td>
-                
-                <td>2025-05-07</td>
-                <td>MANAGER</td>
-                <td>3</td>
-                <td>T-Shirt</td>
-               
-                <td>Approved</td>
+                <td>January 2025</td>
+                <td>₹2,45,000</td>
+                <td>120</td>
+                <td>85</td>
+                <td>₹95,000</td>
+                <td>8,500 BV</td>
+                <td>₹48,000</td>
               </tr>
               <tr>
                 <td>2</td>
-                
-                <td>2025-05-10</td>
-                <td>SENIOR MANAGER</td>
-                <td>6</td>
-                <td>T-Shirt and Bag</td>
-              
-                <td>Approved</td>
+                <td>February 2025</td>
+                <td>₹3,10,000</td>
+                <td>135</td>
+                <td>100</td>
+                <td>₹1,20,000</td>
+                <td>10,200 BV</td>
+                <td>₹55,000</td>
               </tr>
-              <tr>
-                <td>3</td>
-                
-                <td>2025-05-05</td>
-                <td>SILVER MANAGER</td>
-                <td>36</td>
-                <td>Shirt and Mobile</td>
-              
-                <td>pending</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                
-                <td>2025-05-08</td>
-                <td>GOLD MANAGER</td>
-                <td>216</td>
-                <td>Shirt and Laptop</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>5</td>
-               
-                <td>2025-04-10</td>
-                <td>DIAMOND MANAGER</td>
-                <td>1296</td>
-                <td>Shirt and Bike</td>
-
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                
-                <td>2025-05-10</td>
-                <td>BLUE DIAMOND MANAGER</td>
-                <td>7776</td>
-                <td>Shirt and Car</td>
-              
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                
-                <td>2025-06-10</td>
-                <td>PLATINUM MANAGER</td>
-                <td>46656</td>
-               
-                <td>Site 30x40d</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>8</td>
-               
-                <td>2025-05-20</td>
-                <td>FOUNDER</td>
-                <td>279936</td>
-                <td>7 Seater Car</td>
-               
-                <td>Approved</td>
-              </tr>
-              <tr>
-                <td>9</td>
-               
-                <td>2025-10-10</td>
-                <td>DIRECTOR</td>
-                <td>1679616</td>
-                <td>Site 60x80</td>
-               
-                <td>Pending</td>
-              </tr>
-              <tr>
-                <td>10</td>
-                
-                <td>2025-05-15</td>
-                <td>CHAIRMAN</td>
-                <td>10077696</td>
-                <td>Villa</td>
-                
-                <td>Pending</td>
-              </tr>
-              
+             
             </tbody>
           </table>
         </div>
       </div>
       <footer class="main-footer">
-        @2025 Satiys - Developed By Bloom It Solutions
+        @2025 Satiys
       </footer>
     </div>
   </div>
@@ -239,6 +159,7 @@
       const adminIcon = document.getElementById('admin-icon');
       const adminDropdown = document.getElementById('admin-dropdown');
 
+      // Function to close all submenus
       function closeAllSubmenus() {
         document.querySelectorAll('.submenu').forEach(submenu => {
           submenu.classList.remove('active');
@@ -248,6 +169,7 @@
         });
       }
 
+      // Sidebar collapse/expand for desktop
       if (sidebarToggle && sidebarExpand && sidebar && mainContent) {
         sidebarToggle.addEventListener('click', () => {
           const isCollapsed = sidebar.classList.toggle('collapsed');
@@ -263,12 +185,14 @@
         });
       }
 
+      // Sidebar toggle for mobile
       if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
           sidebar.classList.toggle('active');
         });
       }
 
+      // Admin dropdown toggle
       if (adminIcon && adminDropdown) {
         adminIcon.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -282,6 +206,7 @@
         });
       }
 
+      // Main menu toggles
       const mainMenuToggles = [
         {
           toggle: document.getElementById('my-account-toggle'),
@@ -304,41 +229,6 @@
           icon: document.querySelector('#topup-fund-toggle .dropdown-icon')
         }
       ];
-
-      const productDetailsToggle = document.getElementById('product-details-toggle');
-      const productDetailsSubmenu = document.getElementById('product-details-submenu');
-      const productDetailsIcon = document.querySelector('#product-details-toggle .dropdown-icon');
-
-      if (productDetailsToggle && productDetailsSubmenu && productDetailsIcon) {
-        productDetailsToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          const isActive = productDetailsSubmenu.classList.toggle('active');
-          productDetailsIcon.classList.toggle('active');
-          
-          const parentSubmenu = productDetailsToggle.closest('.submenu');
-          if (parentSubmenu) {
-            parentSubmenu.classList.add('active');
-            const parentToggle = parentSubmenu.previousElementSibling;
-            if (parentToggle) {
-              const parentIcon = parentToggle.querySelector('.dropdown-icon');
-              if (parentIcon) {
-                parentIcon.classList.add('active');
-              }
-            }
-          }
-        });
-
-        const productDetailsLinks = productDetailsSubmenu.querySelectorAll('a');
-        productDetailsLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-              sidebar.classList.remove('active');
-            }
-          });
-        });
-      }
 
       mainMenuToggles.forEach(({ toggle, submenu, icon }) => {
         if (toggle && submenu && icon) {
