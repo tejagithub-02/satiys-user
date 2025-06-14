@@ -507,6 +507,10 @@ body {
   border: 2px solid #FFA500;
   box-shadow: 0 0 20px #00CED1;
 }
+.stats-cards .card:nth-child(24) { /* Tour Eligibility */
+  border: 2px solid #FF00FF;
+  box-shadow: 0 0 20px #FF4500;
+}
 .stats-cards .card:hover {
   transform: scale(1.03);
 }
