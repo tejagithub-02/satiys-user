@@ -8,284 +8,9 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="assets/style.css" rel="stylesheet">
-  <style>
-    .search-bar {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        justify-content: flex-start;
-        width: 100%;
-        max-width: 600px;
-    }
-    .search-bar input,
-    .search-bar button {
-        padding: 8px;
-        border: 2px solid #00d4ff;
-        border-radius: 5px;
-        background: #0f3460;
-        color: #b3e0ff;
-        box-shadow: 0 0 5px #00d4ff;
-    }
-    .search-bar input::placeholder {
-        color: #b3e0ff;
-    }
-    .search-bar button {
-        background: #00d4ff;
-        color: #0f3460;
-        cursor: pointer;
-        border: none;
-        transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-    }
-    .search-bar button:hover {
-        background: #00ffcc;
-        box-shadow: 0 0 10px #00ffcc;
-        transform: scale(1.03);
-    }
-    .binary-tree-container {
-        position: relative;
-        width: 100%;
-        height: 400px;
-        overflow-x: auto;
-        overflow-y: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .binary-tree-svg {
-        width: 100%;
-        height: 100%;
-        min-width: 0;
-    }
-    .node {
-        cursor: pointer;
-    }
-    .node-circle {
-        fill: #0f3460;
-        stroke: #00d4ff;
-        stroke-width: 2;
-        transition: box-shadow 0.3s;
-    }
-    .node:hover .node-circle {
-        box-shadow: 0 0 15px #00d4ff;
-    }
-    .node:active .node-circle {
-        box-shadow: 0 0 15px #00d4ff;
-    }
-    .node.highlighted .node-circle {
-        stroke: #ffcc00;
-        stroke-width: 4;
-        box-shadow: 0 0 20px #ffcc00;
-    }
-    .node-icon {
-        font-size: 18px;
-        fill: #00ffcc;
-        dominant-baseline: middle;
-        text-anchor: middle;
-        transform: translateY(1px);
-    }
-    .node-id {
-        font-size: 12px;
-        fill: #b3e0ff;
-        text-anchor: middle;
-    }
-    .node-details {
-        font-size: 12px;
-        fill: #b3e0ff;
-        text-anchor: start;
-    }
-    .child-indicator {
-        font-size: 14px;
-        fill: #00ffcc;
-        text-anchor: middle;
-        dominant-baseline: middle;
-    }
-    .link {
-        stroke: #00d4ff;
-        stroke-width: 2;
-        fill: none;
-    }
-    @media (min-width: 769px) {
-        .sidebar-toggle {
-            display: block;
-        }
-        .menu-toggle {
-            display: none;
-        }
-    }
-    @media (max-width: 768px) {
-        .topbar {
-            padding: 6px;
-        }
-        .topbar h1 {
-            font-size: 1.2rem;
-        }
-        .topbar .admin-icon {
-            font-size: 1.5rem;
-        }
-        .topbar img {
-            width: 40px;
-            height: 40px;
-        }
-        .dashboard-container {
-            flex-direction: column;
-        }
-        .sidebar {
-            width: 180px;
-            border-right: none;
-            border-bottom: 2px solid #00d4ff;
-            position: fixed;
-            top: 60px;
-            left: -180px;
-            padding: 10px;
-        }
-        .sidebar.active {
-            left: 0;
-        }
-        .sidebar.collapsed {
-            width: 180px;
-            left: -180px;
-        }
-        .sidebar.collapsed h3,
-        .sidebar.collapsed a span {
-            display: block;
-        }
-        .sidebar.collapsed a {
-            justify-content: flex-start;
-        }
-        .sidebar-expand {
-            display: none;
-        }
-        .sidebar h3 {
-            font-size: 1.1rem;
-        }
-        .sidebar a {
-            font-size: 0.85rem;
-            padding: 6px;
-        }
-        .sidebar .submenu a {
-            font-size: 0.8rem;
-            padding: 5px 10px;
-        }
-        .main-content {
-            margin-left: 0;
-            padding: 10px;
-        }
-        .main-content.collapsed {
-            margin-left: 0;
-        }
-        .menu-toggle {
-            display: block;
-        }
-        .sidebar-toggle {
-            display: none;
-        }
-        .admin-dropdown {
-            right: 10px;
-        }
-        .sidebar .submenu {
-            margin-left: 15px;
-        }
-        .search-bar {
-            flex-direction: row;
-            gap: 5px;
-            max-width: 100%;
-        }
-        .search-bar input,
-        .search-bar button {
-            width: auto;
-            padding: 6px;
-            font-size: 0.85rem;
-        }
-        .search-bar input {
-            flex: 1;
-        }
-        .search-bar button {
-            padding: 6px 12px;
-        }
-        .binary-tree-container {
-            height: 300px;
-        }
-        .node-circle {
-            r: 20;
-        }
-        .node-icon {
-            font-size: 16px;
-            transform: translateY(0.5px);
-        }
-        .node-id {
-            font-size: 10px;
-        }
-        .node-details {
-            font-size: 10px;
-        }
-        .child-indicator {
-            font-size: 12px;
-        }
-        .link {
-            stroke-width: 1.5;
-        }
-    }
-    @media (max-width: 480px) {
-        .topbar {
-            padding: 4px;
-        }
-        .topbar h1 {
-            font-size: 1rem;
-        }
-        .topbar .admin-icon {
-            font-size: 1.25rem;
-        }
-        .topbar img {
-            width: 32px;
-            height: 32px;
-        }
-        .sidebar {
-            width: 160px;
-            left: -160px;
-        }
-        .sidebar.active {
-            left: 0;
-        }
-        .sidebar h3 {
-            font-size: 1rem;
-        }
-        .sidebar a {
-            font-size: 0.75rem;
-            padding: 5px;
-        }
-        .sidebar .submenu a {
-            font-size: 0.7rem;
-            padding: 4px 8px;
-        }
-        .search-bar input,
-        .search-bar button {
-            padding: 5px;
-            font-size: 0.8rem;
-        }
-        .binary-tree-container {
-            height: 250px;
-        }
-        .node-circle {
-            r: 16;
-        }
-        .node-icon {
-            font-size: 14px;
-            transform: translateY(0.5px);
-        }
-        .node-id {
-            font-size: 8px;
-        }
-        .node-details {
-            font-size: 8px;
-        }
-        .child-indicator {
-            font-size: 10px;
-        }
-        .link {
-            stroke-width: 1;
-        }
-    }
-</style></head>
+  <link rel="stylesheet" href="assets/Binary.css">
+ 
+</head>
 <body> 
   <!-- Topbar -->
   <nav class="topbar text-white flex justify-between items-center">
@@ -378,153 +103,240 @@
       <a href="#" id="sidebar-sign-out"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a>
     </div>
 
-    <!-- Binary Tree Section -->
-    <div class="main-content">
-      <div class="section">
-        <h2 class="text-2xl font-bold text-[#f4c430] mb-4">Binary Tree</h2>
-        <div class="table-section">
-            <h4>Binary Tree</h4>
-            <div class="search-bar">
-                <input type="text" id="search-id" placeholder="Enter ID (e.g., RI001)">
-                <button onclick="searchNode()">Search</button>
-            </div>
-            <div class="binary-tree-container">
-                <svg class="binary-tree-svg">
-                    <!-- Links -->
-                    <path class="link" d="M0,78 L-200,178"></path>
-                    <path class="link" d="M0,78 L200,178"></path>
-                    <path class="link" d="M-200,178 L-300,278"></path>
-                    <path class="link" d="M-200,178 L-100,278"></path>
-                    <path class="link" d="M200,178 L100,278"></path>
-                    <path class="link" d="M200,178 L300,278"></path>
-                    <path class="link" d="M-300,278 L-350,378"></path>
-                    <path class="link" d="M-300,278 L-250,378"></path>
-
-                    <!-- Node RI001 -->
-                    <g class="node" data-id="RI001">
-                        <circle class="node-circle" cx="0" cy="50" r="28"></circle>
-                        <text class="node-icon" x="0" y="50" text-anchor="middle">👤</text>
-                        <g class="child-indicators-group" style="visibility: hidden;">
-                            <text class="child-indicator" x="-38" y="55" text-anchor="middle">◄</text>
-                            <text class="child-indicator" x="38" y="55" text-anchor="middle">►</text>
-                        </g>
-                        <text class="node-id" x="0" y="88" text-anchor="middle">RI001 (Varun)</text>
-                        <g class="node-details-group" style="visibility: hidden;">
-                            <text class="node-details" x="38" y="25">Name: Varun</text>
-                            <text class="node-details" x="38" y="40">E-Mail: varun@gmail.com</text>
-                            <text class="node-details" x="38" y="55">CFP: 0RV</text>
-                            <text class="node-details" x="38" y="70">Number: 9876543210</text>
-                        </g>
-                    </g>
-
-                    <!-- Node RI002 -->
-                    <g class="node" data-id="RI002">
-                        <circle class="node-circle" cx="-200" cy="150" r="28"></circle>
-                        <text class="node-icon" x="-200" y="150" text-anchor="middle">👤</text>
-                        <g class="child-indicators-group" style="visibility: hidden;">
-                            <text class="child-indicator" x="-238" y="155" text-anchor="middle">◄</text>
-                            <text class="child-indicator" x="-162" y="155" text-anchor="middle">►</text>
-                        </g>
-                        <text class="node-id" x="-200" y="188" text-anchor="middle">RI002 (Kiran)</text>
-                        <g class="node-details-group" style="visibility: hidden;">
-                            <text class="node-details" x="-162" y="125">Name: Kiran</text>
-                            <text class="node-details" x="-162" y="140">E-Mail: kiran@gmail.com</text>
-                            <text class="node-details" x="-162" y="155">CFP: 100RV</text>
-                            <text class="node-details" x="-162" y="170">Number: 9276543232</text>
-                        </g>
-                    </g>
-
-                    <!-- Node RI003 -->
-                    <g class="node" data-id="RI003">
-                        <circle class="node-circle" cx="200" cy="150" r="28"></circle>
-                        <text class="node-icon" x="200" y="150" text-anchor="middle">👤</text>
-                        <g class="child-indicators-group" style="visibility: hidden;">
-                            <text class="child-indicator" x="162" y="155" text-anchor="middle">◄</text>
-                            <text class="child-indicator" x="238" y="155" text-anchor="middle">►</text>
-                        </g>
-                        <text class="node-id" x="200" y="188" text-anchor="middle">RI003 (Johnson)</text>
-                        <g class="node-details-group" style="visibility: hidden;">
-                            <text class="node-details" x="238" y="125">Name: Johnson</text>
-                            <text class="node-details" x="238" y="140">E-Mail: john.j@gmail.com</text>
-                            <text class="node-details" x="238" y="155">CFP: 0RV</text>
-                            <text class="node-details" x="238" y="170">Number: 8876543210</text>
-                        </g>
-                    </g>
-
-                    <!-- Node RI004 -->
-                    <g class="node" data-id="RI004">
-                        <circle class="node-circle" cx="-300" cy="250" r="28"></circle>
-                        <text class="node-icon" x="-300" y="250" text-anchor="middle">👤</text>
-                        <g class="child-indicators-group" style="visibility: hidden;">
-                            <text class="child-indicator" x="-338" y="255" text-anchor="middle">◄</text>
-                            <text class="child-indicator" x="-262" y="255" text-anchor="middle">►</text>
-                        </g>
-                        <text class="node-id" x="-300" y="288" text-anchor="middle">RI004 (Emily)</text>
-                        <g class="node-details-group" style="visibility: hidden;">
-                            <text class="node-details" x="-262" y="225">Name: Emily</text>
-                            <text class="node-details" x="-262" y="240">E-Mail: emily.b@gmail.com</text>
-                            <text class="node-details" x="-262" y="255">CFP: 0RV</text>
-                            <text class="node-details" x="-262" y="270">Number: 8736543210</text>
-                        </g>
-                    </g>
-
-                    <!-- Node RI005 -->
-                    <g class="node" data-id="RI005">
-                        <circle class="node-circle" cx="-100" cy="250" r="28"></circle>
-                        <text class="node-icon" x="-100" y="250" text-anchor="middle">👤</text>
-                        <g class="child-indicators-group" style="visibility: hidden;"></g>
-                        <text class="node-id" x="-100" y="288" text-anchor="middle">RI005 (David)</text>
-                        <g class="node-details-group" style="visibility: hidden;">
-                            <text class="node-details" x="-62" y="225">Name: David</text>
-                            <text class="node-details" x="-62" y="240">E-Mail: david.w@gmail.com</text>
-                            <text class="node-details" x="-62" y="255">CFP: 0RV</text>
-                            <text class="node-details" x="-62" y="270">Number: 6856543210</text>
-                        </g>
-                    </g>
-
-                    <!-- Node RI006 -->
-                    <g class="node" data-id="RI006">
-                        <circle class="node-circle" cx="100" cy="250" r="28"></circle>
-                        <text class="node-icon" x="100" y="250" text-anchor="middle">👤</text>
-                        <g class="child-indicators-group" style="visibility: hidden;">
-                            <text class="child-indicator" x="62" y="255" text-anchor="middle">◄</text>
-                            <text class="child-indicator" x="138" y="255" text-anchor="middle">►</text>
-                        </g>
-                        <text class="node-id" x="100" y="288" text-anchor="middle">RI006 (Sarah)</text>
-                        <g class="node-details-group" style="visibility: hidden;">
-                            <text class="node-details" x="138" y="225">Name: Sarah</text>
-                            <text class="node-details" x="138" y="240">E-Mail: sarah.k@gmail.com</text>
-                            <text class="node-details" x="138" y="255">CFP: 0RV</text>
-                            <text class="node-details" x="138" y="270">Number: 9123456789</text>
-                        </g>
-                    </g>
-
-                    <!-- Node RI007 -->
-                    <g class="node" data-id="RI007">
-                        <circle class="node-circle" cx="300" cy="250" r="28"></circle>
-                        <text class="node-icon" x="300" y="250" text-anchor="middle">👤</text>
-                        <g class="child-indicators-group" style="visibility: hidden;"></g>
-                        <text class="node-id" x="300" y="288" text-anchor="middle">RI007 (Michael)</text>
-                        <g class="node-details-group" style="visibility: hidden;">
-                            <text class="node-details" x="338" y="225">Name: Michael</text>
-                            <text class="node-details" x="338" y="240">E-Mail: michael.l@gmail.com</text>
-                            <text class="node-details" x="338" y="255">CFP: 0RV</text>
-                            <text class="node-details" x="338" y="270">Number: 9988776655</text>
-                        </g>
-                    </g>
-
-                </svg>
-            </div>
+   <!-- Tree Section -->
+   <div class="main-content">
+    <div class="section">
+      <h2 class="text-2xl font-bold text-[#f4c430] mb-4">Tree View</h2>
+      <div class="table-section">
+        <div class="tree-tabs">
+          <button class="tree-tab active" data-tree="binary">Binary Tree</button>
+          <button class="tree-tab" data-tree="repurchase">Repurchase Tree</button>
         </div>
+        <!-- Binary Tree Content -->
+        <div class="tree-content binary-tree-content active">
+          <h4>Binary Tree Data</h4>
+          <div class="search-bar">
+            <input type="text" id="binary-search-id" placeholder="Enter ID (e.g., RI001)">
+            <button onclick="searchNode('binary')">Search</button>
+          </div>
+          <div class="binary-tree-container">
+            <svg class="binary-tree-svg"></svg>
+          </div>
+          <div class="table-container">
+            <h4>Binary Tree Details</h4>
+            <div class="table-responsive">
+              <table class="table table-bordered table-dark" id="binary-table">
+                <thead>
+                  <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Qualified Date</th>
+                    <th>BV Points</th>
+                    <th>KYC Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-id="RI001">
+                    <td>RI001</td>
+                    <td>Varun</td>
+                    <td>Jan 10, 2025</td>
+                    <td>0</td>
+                    <td>Verified</td>
+                  </tr>
+                  <tr data-id="RI002">
+                    <td>RI002</td>
+                    <td>Kiran</td>
+                    <td>Jan 12, 2025</td>
+                    <td>100</td>
+                    <td>Verified</td>
+                  </tr>
+                  <tr data-id="RI003">
+                    <td>RI003</td>
+                    <td>Johnson</td>
+                    <td>Jan 15, 2025</td>
+                    <td>0</td>
+                    <td>Pending</td>
+                  </tr>
+                  <tr data-id="RI004">
+                    <td>RI004</td>
+                    <td>Emily</td>
+                    <td>Jan 20, 2025</td>
+                    <td>0</td>
+                    <td>Pending</td>
+                  </tr>
+                  <tr data-id="RI005">
+                    <td>RI005</td>
+                    <td>David</td>
+                    <td>Jan 22, 2025</td>
+                    <td>0</td>
+                    <td>Verified</td>
+                  </tr>
+                  <tr data-id="RI006">
+                    <td>RI006</td>
+                    <td>Sarah</td>
+                    <td>Jan 25, 2025</td>
+                    <td>0</td>
+                    <td>Pending</td>
+                  </tr>
+                  <tr data-id="RI007">
+                    <td>RI007</td>
+                    <td>Michael</td>
+                    <td>Jan 28, 2025</td>
+                    <td>0</td>
+                    <td>Verified</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Repurchase Tree Content -->
+        <div class="tree-content repurchase-tree-content">
+          <h4>Repurchase Tree Data</h4>
+          <div class="search-bar">
+            <input type="text" id="repurchase-search-id" placeholder="Enter ID (e.g., RP001)" disabled>
+            <button disabled>Search</button>
+          </div>
+          <div class="repurchase-tree-container">
+            <svg class="repurchase-tree-svg"></svg>
+          </div>
+          <div class="table-container" id="repurchase-table-container">
+            <h4>Repurchase Tree Details</h4>
+            <div class="table-responsive">
+              <table class="table table-bordered table-dark">
+                <thead>
+                  <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Repurchase Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>RP001</td>
+                    <td>Anita</td>
+                    <td>Feb 01, 2025</td>
+                    <td>₹5000</td>
+                    <td>Completed</td>
+                  </tr>
+                  <tr>
+                    <td>RP002</td>
+                    <td>Rajesh</td>
+                    <td>Feb 03, 2025</td>
+                    <td>₹3000</td>
+                    <td>Pending</td>
+                  </tr>
+                  <tr>
+                    <td>RP003</td>
+                    <td>Priya</td>
+                    <td>Feb 05, 2025</td>
+                    <td>₹4000</td>
+                    <td>Completed</td>
+                  </tr>
+                  <tr>
+                    <td>RP004</td>
+                    <td>Vikram</td>
+                    <td>Feb 07, 2025</td>
+                    <td>₹2500</td>
+                    <td>Pending</td>
+                  </tr>
+                  <tr>
+                    <td>RP005</td>
+                    <td>Neha</td>
+                    <td>Feb 09, 2025</td>
+                    <td>₹3500</td>
+                    <td>Completed</td>
+                  </tr>
+                  <tr>
+                    <td>RP006</td>
+                    <td>Arjun</td>
+                    <td>Feb 11, 2025</td>
+                    <td>₹2000</td>
+                    <td>Pending</td>
+                  </tr>
+                  <tr>
+                    <td>RP007</td>
+                    <td>Sonia</td>
+                    <td>Feb 13, 2025</td>
+                    <td>₹4500</td>
+                    <td>Completed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-      <footer class="main-footer">
-        @2025 Raanvi - Developed By Raanvi
-      </footer>
-    </div>
+    <footer class="main-footer">
+      @2025 Satiys - Developed By Bloom It Solutions
+    </footer>
+  </div>
+  </div>
+
+   <!-- Node Data Container for Small Screens -->
+   <div class="node-data-container" id="node-data-container">
+    <span class="close-btn" onclick="closeNodeData()">✕</span>
+    <div id="node-data-content"></div>
+  </div>
+
+  <!-- Tree Data in HTML Format -->
+  <div id="tree-data" style="display:none;">
+    <div data-id="RI001" data-name="Name: Varun" data-email="E-Mail: varun@gmail.com" 
+         data-mobile="Number: 9876543210" data-cfp="0RV" data-level="0" 
+         data-x="0" data-y="50" data-left="RI002" data-right="RI003"></div>
+    <div data-id="RI002" data-name="Name: Kiran" data-email="E-Mail: kiran@gmail.com" 
+         data-mobile="Number: 9276543232" data-cfp="100RV" data-level="1" 
+         data-x="-200" data-y="150" data-left="RI004" data-right="RI005"></div>
+    <div data-id="RI003" data-name="Name: Johnson" data-email="E-Mail: john.j@gmail.com" 
+         data-mobile="Number: 8876543210" data-cfp="0RV" data-level="1" 
+         data-x="200" data-y="150" data-left="RI006" data-right="RI007"></div>
+    <div data-id="RI004" data-name="Name: Emily" data-email="E-Mail: emily.b@gmail.com" 
+         data-mobile="Number: 8736543210" data-cfp="0RV" data-level="2" 
+         data-x="-300" data-y="250" data-left="" data-right=""></div>
+    <div data-id="RI005" data-name="Name: David" data-email="E-Mail: david.w@gmail.com" 
+         data-mobile="Number: 6856543210" data-cfp="0RV" data-level="2" 
+         data-x="-100" data-y="250" data-left="" data-right=""></div>
+    <div data-id="RI006" data-name="Name: Sarah" data-email="E-Mail: sarah.k@gmail.com" 
+         data-mobile="Number: 9123456789" data-cfp="0RV" data-level="2" 
+         data-x="100" data-y="250" data-left="" data-right=""></div>
+    <div data-id="RI007" data-name="Name: Michael" data-email="E-Mail: michael.l@gmail.com" 
+         data-mobile="Number: 9988776655" data-cfp="0RV" data-level="2" 
+         data-x="300" data-y="250" data-left="" data-right=""></div>
+  </div>
+
+  <!-- Repurchase Tree Data in HTML Format -->
+  <div id="repurchase-tree-data" style="display:none;">
+    <div data-id="RP001" data-name="Name: Anita" data-email="E-Mail: anita@gmail.com" 
+         data-mobile="Number: 9123456780" data-rv="100RV" data-level="0" data-x="0" data-y="50" 
+         data-left1="RP002" data-left2="RP003" data-left3="RP004" 
+         data-right1="RP005" data-right2="RP006" data-right3="RP007"></div>
+    <div data-id="RP002" data-name="Name: Rajesh" data-email="E-Mail: rajesh@gmail.com" 
+         data-mobile="Number: 9123456781" data-rv="50RV" data-level="1" data-x="-300" data-y="150"></div>
+    <div data-id="RP003" data-name="Name: Priya" data-email="E-Mail: priya@gmail.com" 
+         data-mobile="Number: 9123456782" data-rv="75RV" data-level="1" data-x="-200" data-y="150"></div>
+    <div data-id="RP004" data-name="Name: Vikram" data-email="E-Mail: vikram@gmail.com" 
+         data-mobile="Number: 9123456783" data-rv="25RV" data-level="1" data-x="-100" data-y="150"></div>
+    <div data-id="RP005" data-name="Name: Neha" data-email="E-Mail: neha@gmail.com" 
+         data-mobile="Number: 9123456784" data-rv="0RV" data-level="1" data-x="100" data-y="150"></div>
+    <div data-id="RP006" data-name="Name: Arjun" data-email="E-Mail: arjun@gmail.com" 
+         data-mobile="Number: 9123456785" data-rv="10RV" data-level="1" data-x="200" data-y="150"></div>
+    <div data-id="RP007" data-name="Name: Sonia" data-email="E-Mail: sonia@gmail.com" 
+         data-mobile="Number: 9123456786" data-rv="0RV" data-level="1" data-x="300" data-y="150"></div>
+  </div>
+
+  <!-- Visualization Configuration -->
+  <div id="vis-config" style="display:none;" 
+       data-node-radius-sm="16" data-node-radius-md="20" data-node-radius-lg="28"
+       data-y-spacing-sm="80" data-y-spacing-md="100" data-y-spacing-lg="120"
+       data-spacing-factor-sm="0.4" data-spacing-factor-md="0.6" data-spacing-factor-lg="1">
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // UI Controls
       const sidebarToggle = document.getElementById('sidebar-toggle');
       const sidebarExpand = document.getElementById('sidebar-expand');
       const sidebar = document.querySelector('.sidebar');
@@ -535,9 +347,413 @@
       const myTeamToggle = document.getElementById('my-team-toggle');
       const myTeamSubmenu = document.getElementById('my-team-submenu');
       const dropdownIcon = myTeamToggle.querySelector('.dropdown-icon');
-      const svg = document.querySelector('.binary-tree-svg');
-      const container = document.querySelector('.binary-tree-container');
+      const treeTabs = document.querySelectorAll('.tree-tab');
+      const treeContents = document.querySelectorAll('.tree-content');
 
+      // Tree Visualization
+      const binarySvg = document.querySelector('.binary-tree-svg');
+      const binaryContainer = document.querySelector('.binary-tree-container');
+      const repurchaseSvg = document.querySelector('.repurchase-tree-svg');
+      const repurchaseContainer = document.querySelector('.repurchase-tree-container');
+      const ns = 'http://www.w3.org/2000/svg';
+
+      // Node data container for small screens
+      const nodeDataContainer = document.getElementById('node-data-container');
+      const nodeDataContent = document.getElementById('node-data-content');
+
+      // Convert treeData to JavaScript array
+      const binaryTreeData = Array.from(document.querySelectorAll('#tree-data div')).map(node => ({
+        id: node.getAttribute('data-id'),
+        name: node.getAttribute('data-name'),
+        email: node.getAttribute('data-email'),
+        mobile: node.getAttribute('data-mobile'),
+        cfp: node.getAttribute('data-cfp'),
+        level: parseInt(node.getAttribute('data-level')),
+        x: parseInt(node.getAttribute('data-x')),
+        y: parseInt(node.getAttribute('data-y')),
+        left: node.getAttribute('data-left') || null,
+        right: node.getAttribute('data-right') || null
+      }));
+
+      // Convert repurchaseTreeData to JavaScript array
+      const repurchaseTreeData = Array.from(document.querySelectorAll('#repurchase-tree-data div')).map(node => ({
+        id: node.getAttribute('data-id'),
+        name: node.getAttribute('data-name'),
+        email: node.getAttribute('data-email'),
+        mobile: node.getAttribute('data-mobile'),
+        rv: node.getAttribute('data-rv'),
+        level: parseInt(node.getAttribute('data-level')),
+        x: parseInt(node.getAttribute('data-x')),
+        y: parseInt(node.getAttribute('data-y')),
+        left1: node.getAttribute('data-left1') || null,
+        left2: node.getAttribute('data-left2') || null,
+        left3: node.getAttribute('data-left3') || null,
+        right1: node.getAttribute('data-right1') || null,
+        right2: node.getAttribute('data-right2') || null,
+        right3: node.getAttribute('data-right3') || null
+      }));
+
+      // Sample repurchase table data
+      const repurchaseTableData = {
+        'RP001': { date: 'Feb 01, 2025', amount: '₹5000', status: 'Completed' },
+        'RP002': { date: 'Feb 03, 2025', amount: '₹3000', status: 'Pending' },
+        'RP003': { date: 'Feb 05, 2025', amount: '₹4000', status: 'Completed' },
+        'RP004': { date: 'Feb 07, 2025', amount: '₹2500', status: 'Pending' },
+        'RP005': { date: 'Feb 09, 2025', amount: '₹3500', status: 'Completed' },
+        'RP006': { date: 'Feb 11, 2025', amount: '₹2000', status: 'Pending' },
+        'RP007': { date: 'Feb 13, 2025', amount: '₹4500', status: 'Completed' }
+      };
+
+      // Get visualization config
+      const visConfig = document.getElementById('vis-config');
+      const config = {
+        nodeRadius: {
+          sm: parseInt(visConfig.getAttribute('data-node-radius-sm')),
+          md: parseInt(visConfig.getAttribute('data-node-radius-md')),
+          lg: parseInt(visConfig.getAttribute('data-node-radius-lg'))
+        },
+        ySpacing: {
+          sm: parseInt(visConfig.getAttribute('data-y-spacing-sm')),
+          md: parseInt(visConfig.getAttribute('data-y-spacing-md')),
+          lg: parseInt(visConfig.getAttribute('data-y-spacing-lg'))
+        },
+        spacingFactor: {
+          sm: parseFloat(visConfig.getAttribute('data-spacing-factor-sm')),
+          md: parseFloat(visConfig.getAttribute('data-spacing-factor-md')),
+          lg: parseFloat(visConfig.getAttribute('data-spacing-factor-lg'))
+        }
+      };
+
+      // Function to display default repurchase table
+      function displayDefaultRepurchaseTable() {
+        const container = document.getElementById('repurchase-table-container');
+        container.innerHTML = `
+          <h4>Repurchase Tree Details</h4>
+          <div class="table-responsive">
+            <table class="table table-bordered table-dark">
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>Repurchase Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${Object.keys(repurchaseTableData).map(id => {
+                  const node = repurchaseTreeData.find(n => n.id === id);
+                  return `
+                    <tr data-id="${id}">
+                      <td>${id}</td>
+                      <td>${node.name.split(': ')[1]}</td>
+                      <td>${repurchaseTableData[id].date}</td>
+                      <td>${repurchaseTableData[id].amount}</td>
+                      <td>${repurchaseTableData[id].status}</td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+
+      // Function to display single node repurchase data
+      function displayRepurchaseNodeData(nodeId) {
+        const container = document.getElementById('repurchase-table-container');
+        const node = repurchaseTreeData.find(n => n.id === nodeId);
+        const tableData = repurchaseTableData[nodeId];
+        if (node && tableData) {
+          container.innerHTML = `
+            <h4>Repurchase Tree Details</h4>
+            <div class="table-responsive">
+              <table class="table table-bordered table-dark">
+                <thead>
+                  <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Repurchase Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-id="${nodeId}" class="table-row-highlighted">
+                    <td>${node.id}</td>
+                    <td>${node.name.split(': ')[1]}</td>
+                    <td>${tableData.date}</td>
+                    <td>${tableData.amount}</td>
+                    <td>${tableData.status}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          `;
+        }
+      }
+
+      function highlightTableRow(type, nodeId) {
+        if (type === 'binary') {
+          const table = document.getElementById('binary-table');
+          const rows = table.querySelectorAll('tbody tr');
+          rows.forEach(row => {
+            row.classList.remove('table-row-highlighted');
+            if (row.getAttribute('data-id') === nodeId) {
+              row.classList.add('table-row-highlighted');
+              row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          });
+        }
+      }
+
+      // Function to show node data in the bottom container (small screens)
+      function showNodeData(node, type) {
+        const details = [
+          node.name,
+          node.email,
+          type === 'binary' ? `CFP: ${node.cfp}` : `RV: ${node.rv}`,
+          node.mobile
+        ];
+        nodeDataContent.innerHTML = details.map(detail => `<p>${detail}</p>`).join('');
+        nodeDataContainer.style.display = 'block';
+      }
+
+      // Function to close the node data container
+      window.closeNodeData = function() {
+        nodeDataContainer.style.display = 'none';
+        nodeDataContent.innerHTML = '';
+      };
+
+      function drawTree(type, highlightedId = null) {
+        const svg = type === 'binary' ? binarySvg : repurchaseSvg;
+        const container = type === 'binary' ? binaryContainer : repurchaseContainer;
+        const treeData = type === 'binary' ? binaryTreeData : repurchaseTreeData;
+        svg.innerHTML = '';
+
+        const containerWidth = container.clientWidth;
+        const screenWidth = window.innerWidth;
+
+        const spacingFactor = screenWidth <= 480 ? config.spacingFactor.sm : 
+                             screenWidth <= 768 ? config.spacingFactor.md : 
+                             config.spacingFactor.lg;
+        const nodeRadius = screenWidth <= 480 ? config.nodeRadius.sm : 
+                           screenWidth <= 768 ? config.nodeRadius.md : 
+                           config.nodeRadius.lg;
+        const ySpacing = screenWidth <= 480 ? config.ySpacing.sm : 
+                         screenWidth <= 768 ? config.ySpacing.md : 
+                         config.ySpacing.lg;
+
+        const offsetX = containerWidth / 2;
+
+        const updatedTreeData = treeData.map(node => ({
+          ...node,
+          x: (node.x * spacingFactor) + offsetX,
+          y: node.level * ySpacing + 50
+        }));
+
+        // Draw connections
+        updatedTreeData.forEach(node => {
+          const children = type === 'binary' 
+            ? [node.left, node.right]
+            : [node.left1, node.left2, node.left3, node.right1, node.right2, node.right3];
+          
+          children.forEach(childId => {
+            if (childId) {
+              const child = updatedTreeData.find(n => n.id === childId);
+              if (child) {
+                const path = document.createElementNS(ns, 'path');
+                path.setAttribute('class', 'link');
+                path.setAttribute('d', `M${node.x},${node.y + nodeRadius} L${child.x},${child.y - nodeRadius}`);
+                svg.appendChild(path);
+              }
+            }
+          });
+        });
+
+        // Draw nodes
+        updatedTreeData.forEach(node => {
+          const g = document.createElementNS(ns, 'g');
+          g.setAttribute('class', `node ${node.id === highlightedId ? 'highlighted' : ''}`);
+          g.setAttribute('data-id', node.id);
+
+          const circle = document.createElementNS(ns, 'circle');
+          circle.setAttribute('class', 'node-circle');
+          circle.setAttribute('cx', node.x);
+          circle.setAttribute('cy', node.y);
+          circle.setAttribute('r', nodeRadius);
+          g.appendChild(circle);
+
+          const userIcon = document.createElementNS(ns, 'text');
+          userIcon.setAttribute('class', 'node-icon');
+          userIcon.setAttribute('x', node.x);
+          userIcon.setAttribute('y', node.y);
+          userIcon.setAttribute('text-anchor', 'middle');
+          userIcon.textContent = '👤';
+          g.appendChild(userIcon);
+
+          const childIndicatorsGroup = document.createElementNS(ns, 'g');
+          childIndicatorsGroup.setAttribute('class', 'child-indicators-group');
+          childIndicatorsGroup.style.visibility = 'hidden';
+
+          const children = type === 'binary' 
+            ? [{ id: node.left, x: -1 }, { id: node.right, x: 1 }]
+            : [
+                { id: node.left1, x: -3 }, { id: node.left2, x: -2 }, { id: node.left3, x: -1 },
+                { id: node.right1, x: 1 }, { id: node.right2, x: 2 }, { id: node.right3, x: 3 }
+              ].filter(child => child.id);
+
+          children.forEach(child => {
+            const indicator = document.createElementNS(ns, 'text');
+            indicator.setAttribute('class', 'child-indicator');
+            indicator.setAttribute('x', node.x + (child.x * (nodeRadius + 10)));
+            indicator.setAttribute('y', node.y + 5);
+            indicator.setAttribute('text-anchor', 'middle');
+            indicator.textContent = child.x < 0 ? '◄' : '►';
+            childIndicatorsGroup.appendChild(indicator);
+          });
+
+          g.appendChild(childIndicatorsGroup);
+
+          const idText = document.createElementNS(ns, 'text');
+          idText.setAttribute('class', 'node-id');
+          idText.setAttribute('x', node.x);
+          idText.setAttribute('y', type === 'repurchase' ? node.y - nodeRadius - 10 : node.y + nodeRadius + 10);
+          idText.textContent = `${node.id} (${node.name.split(': ')[1]})`;
+          g.appendChild(idText);
+
+          const detailsGroup = document.createElementNS(ns, 'g');
+          detailsGroup.setAttribute('class', 'node-details-group');
+          detailsGroup.style.visibility = 'hidden';
+
+          const details = [
+            { label: node.name, offsetY: -25 },
+            { label: node.email, offsetY: -10 },
+            { label: type === 'binary' ? `CFP: ${node.cfp}` : `RV: ${node.rv}`, offsetY: 5 },
+            { label: node.mobile, offsetY: 20 }
+          ];
+
+          details.forEach(detail => {
+            const detailText = document.createElementNS(ns, 'text');
+            detailText.setAttribute('class', 'node-details');
+            detailText.setAttribute('x', node.x + nodeRadius + 10);
+            detailText.setAttribute('y', node.y + detail.offsetY);
+            detailText.textContent = detail.label;
+            detailsGroup.appendChild(detailText);
+          });
+
+          g.appendChild(detailsGroup);
+          svg.appendChild(g);
+        });
+
+        // Add hover and click events
+        document.querySelectorAll('.node').forEach(node => {
+          const detailsGroup = node.querySelector('.node-details-group');
+          const childIndicatorsGroup = node.querySelector('.child-indicators-group');
+          const nodeId = node.getAttribute('data-id');
+          const nodeData = (type === 'binary' ? binaryTreeData : repurchaseTreeData).find(n => n.id === nodeId);
+
+          // Determine if the screen is small
+          const isSmallScreen = window.innerWidth <= 768;
+
+          if (!isSmallScreen) {
+            // Hover behavior for larger screens
+            node.addEventListener('mouseover', () => {
+              detailsGroup.style.visibility = 'visible';
+              childIndicatorsGroup.style.visibility = 'visible';
+            });
+            node.addEventListener('mouseout', () => {
+              detailsGroup.style.visibility = 'hidden';
+              childIndicatorsGroup.style.visibility = 'hidden';
+            });
+          }
+
+          // Click behavior for all screens
+          node.addEventListener('click', () => {
+            if (isSmallScreen) {
+              // Show data in bottom container on small screens
+              showNodeData(nodeData, type);
+            }
+            if (type === 'repurchase') {
+              displayRepurchaseNodeData(nodeId);
+            }
+          });
+        });
+
+        if (highlightedId) {
+          const highlightedNode = document.querySelector(`.node[data-id="${highlightedId}"]`);
+          if (highlightedNode) {
+            const circle = highlightedNode.querySelector('.node-circle');
+            const cx = parseFloat(circle.getAttribute('cx'));
+            const cy = parseFloat(circle.getAttribute('cy'));
+            container.scrollTo({
+              left: cx - container.clientWidth / 2,
+              top: cy - container.clientHeight / 2,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }
+
+      window.searchNode = function(type) {
+        if (type === 'binary') {
+          const searchInput = document.getElementById('binary-search-id').value.trim().toUpperCase();
+          if (searchInput) {
+            const node = binaryTreeData.find(n => n.id === searchInput);
+            if (node) {
+              drawTree('binary', searchInput);
+              highlightTableRow('binary', searchInput);
+            } else {
+              alert('ID not found in binary tree.');
+              drawTree('binary');
+              highlightTableRow('binary', null);
+            }
+          } else {
+            drawTree('binary');
+            highlightTableRow('binary', null);
+          }
+        }
+      };
+
+      // Tab switching
+      treeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          treeTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          treeContents.forEach(c => c.classList.remove('active'));
+          document.querySelector(`.${tab.dataset.tree}-tree-content`).classList.add('active');
+          drawTree(tab.dataset.tree);
+          if (tab.dataset.tree === 'repurchase') {
+            displayDefaultRepurchaseTable();
+          } else {
+            highlightTableRow('binary', null);
+          }
+          // Close node data container when switching tabs
+          closeNodeData();
+        });
+      });
+
+      // Search bar Enter key
+      document.getElementById('binary-search-id').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          searchNode('binary');
+        }
+      });
+
+      // Initial draw
+      drawTree('binary');
+
+      // Redraw on resize
+      window.addEventListener('resize', () => {
+        const activeTab = document.querySelector('.tree-tab.active');
+        drawTree(activeTab.dataset.tree);
+        // Close node data container on resize if screen size changes
+        if (window.innerWidth > 768) {
+          closeNodeData();
+        }
+      });
+
+      // Sidebar toggle
       if (sidebarToggle && sidebarExpand && sidebar && mainContent) {
         sidebarToggle.addEventListener('click', () => {
           const isCollapsed = sidebar.classList.toggle('collapsed');
@@ -553,12 +769,14 @@
         });
       }
 
+      // Mobile menu
       if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
           sidebar.classList.toggle('active');
         });
       }
 
+      // Admin dropdown
       if (adminIcon && adminDropdown) {
         adminIcon.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -571,6 +789,7 @@
         });
       }
 
+      // My Team submenu
       if (myTeamToggle && myTeamSubmenu && dropdownIcon) {
         myTeamToggle.addEventListener('click', (e) => {
           e.preventDefault();
@@ -604,138 +823,6 @@
           }
         });
       }
-
-      function adjustBinaryTree() {
-        const containerWidth = container.clientWidth;
-        const screenWidth = window.innerWidth;
-        const spacingFactor = screenWidth <= 480 ? 0.4 : screenWidth <= 768 ? 0.6 : 1;
-        const nodeRadius = screenWidth <= 480 ? 14 : screenWidth <= 768 ? 18 : 28;
-        const ySpacing = 150;
-        const offsetX = containerWidth / 2;
-
-        const nodes = [
-          { id: 'RI001', x: 0, level: 0, left: 'RI002', right: 'RI003' },
-          { id: 'RI002', x: -300, level: 1, left: 'RI004', right: 'RI005' },
-          { id: 'RI003', x: 300, level: 1, left: 'RI006', right: 'RI007' },
-          { id: 'RI004', x: screenWidth <= 768 ? -562.5 : -450, level: 2, left: 'RI008', right: 'RI009' },
-          { id: 'RI005', x: screenWidth <= 768 ? -187.5 : -150, level: 2, left: 'RI010', right: 'RI011' },
-          { id: 'RI006', x: screenWidth <= 768 ? 187.5 : 150, level: 2, left: 'RI012', right: 'RI013' },
-          { id: 'RI007', x: screenWidth <= 768 ? 562.5 : 450, level: 2, left: 'RI014', right: 'RI015' },
-          { id: 'RI008', x: screenWidth <= 768 ? -675 : -525, level: 3, left: null, right: null },
-          { id: 'RI009', x: screenWidth <= 768 ? -450 : -375, level: 3, left: null, right: null },
-          { id: 'RI010', x: screenWidth <= 768 ? -337.5 : -225, level: 3, left: null, right: null },
-          { id: 'RI011', x: screenWidth <= 768 ? -112.5 : -75, level: 3, left: null, right: null },
-          { id: 'RI012', x: screenWidth <= 768 ? 112.5 : 75, level: 3, left: null, right: null },
-          { id: 'RI013', x: screenWidth <= 768 ? 337.5 : 225, level: 3, left: null, right: null },
-          { id: 'RI014', x: screenWidth <= 768 ? 450 : 375, level: 3, left: null, right: null },
-          { id: 'RI015', x: screenWidth <= 768 ? 675 : 525, level: 3, left: null, right: null }
-        ];
-
-        nodes.forEach(node => {
-          const g = svg.querySelector(`.node[data-id="${node.id}"]`);
-          if (g) {
-            const cx = (node.x * spacingFactor) + offsetX;
-            const cy = node.level * ySpacing + 50;
-            g.querySelector('.node-circle').setAttribute('cx', cx);
-            g.querySelector('.node-circle').setAttribute('cy', cy);
-            g.querySelector('.node-circle').setAttribute('r', nodeRadius);
-            g.querySelector('.node-icon').setAttribute('x', cx);
-            g.querySelector('.node-icon').setAttribute('y', cy);
-            g.querySelector('.node-id').setAttribute('x', cx);
-            g.querySelector('.node-id').setAttribute('y', cy + nodeRadius + 10);
-            const details = g.querySelectorAll('.node-details');
-            details.forEach((detail, i) => {
-              detail.setAttribute('x', cx + nodeRadius + 10);
-              detail.setAttribute('y', cy + [-25, -10, 5, 20][i]);
-            });
-            const indicators = g.querySelectorAll('.child-indicator');
-            if (node.left && indicators[0]) {
-              indicators[0].setAttribute('x', cx - nodeRadius - 8);
-              indicators[0].setAttribute('y', cy);
-            }
-            if (node.right && indicators[indicators.length - 1]) {
-              indicators[indicators.length - 1].setAttribute('x', cx + nodeRadius + 8);
-              indicators[indicators.length - 1].setAttribute('y', cy);
-            }
-          }
-        });
-
-        const paths = [
-          { from: 'RI001', to: 'RI002' },
-          { from: 'RI001', to: 'RI003' },
-          { from: 'RI002', to: 'RI004' },
-          { from: 'RI002', to: 'RI005' },
-          { from: 'RI003', to: 'RI006' },
-          { from: 'RI003', to: 'RI007' },
-          { from: 'RI004', to: 'RI008' },
-          { from: 'RI004', to: 'RI009' },
-          { from: 'RI005', to: 'RI010' },
-          { from: 'RI005', to: 'RI011' },
-          { from: 'RI006', to: 'RI012' },
-          { from: 'RI006', to: 'RI013' },
-          { from: 'RI007', to: 'RI014' },
-          { from: 'RI007', to: 'RI015' }
-        ];
-
-        paths.forEach((path, index) => {
-          const fromNode = nodes.find(n => n.id === path.from);
-          const toNode = nodes.find(n => n.id === path.to);
-          if (fromNode && toNode) {
-            const fromX = (fromNode.x * spacingFactor) + offsetX;
-            const fromY = fromNode.level * ySpacing + 50 + nodeRadius;
-            const toX = (toNode.x * spacingFactor) + offsetX;
-            const toY = toNode.level * ySpacing + 50 - nodeRadius;
-            svg.querySelectorAll('.link')[index].setAttribute('d', `M${fromX},${fromY} L${toX},${toY}`);
-          }
-        });
-      }
-
-      window.searchNode = () => {
-        const searchInput = document.getElementById('search-id').value.trim().toUpperCase();
-        if (searchInput) {
-          const node = svg.querySelector(`.node[data-id="${searchInput}"]`);
-          if (node) {
-            svg.querySelectorAll('.node').forEach(n => n.classList.remove('highlighted'));
-            node.classList.add('highlighted');
-            const circle = node.querySelector('.node-circle');
-            const cx = parseFloat(circle.getAttribute('cx'));
-            const cy = parseFloat(circle.getAttribute('cy'));
-            container.scrollTo({
-              left: cx - container.clientWidth / 2,
-              top: cy - container.clientHeight / 2,
-              behavior: 'smooth'
-            });
-          } else {
-            alert('ID not found in the binary tree.');
-            svg.querySelectorAll('.node').forEach(n => n.classList.remove('highlighted'));
-          }
-        } else {
-          svg.querySelectorAll('.node').forEach(n => n.classList.remove('highlighted'));
-        }
-      };
-
-      document.getElementById('search-id').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          searchNode();
-        }
-      });
-
-      document.querySelectorAll('.node').forEach(node => {
-        const detailsGroup = node.querySelector('.node-details-group');
-        const childIndicatorsGroup = node.querySelector('.child-indicators-group');
-        node.addEventListener('mouseover', () => {
-          detailsGroup.style.visibility = 'visible';
-          childIndicatorsGroup.style.visibility = 'visible';
-        });
-        node.addEventListener('mouseout', () => {
-          detailsGroup.style.visibility = 'hidden';
-          childIndicatorsGroup.style.visibility = 'hidden';
-        });
-      });
-
-      adjustBinaryTree();
-
-      window.addEventListener('resize', adjustBinaryTree);
     });
   </script>
 </body>
